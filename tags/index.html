@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -101,7 +101,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -114,7 +114,7 @@
       apiKey: 'daf1e5aca80df9af5f150557432cc84a',
       indexName: 'search_index',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+      labels: {"input_placeholder":"输入关键字","hits_empty":"没有找到[${query}]的相关内容","hits_stats":"${hits}条相关记录, 耗时: ${time} ms"}
     }
   };
 </script>
@@ -249,6 +249,10 @@
       
         <li class="menu-item menu-item-search">
           
+            <a href="javascript:;" class="popup-trigger">
+　　　　　<!-- 增加的代码 end-->
+
+          
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
             
@@ -313,10 +317,10 @@
     
       <div class="tag-cloud">
         <div class="tag-cloud-title">
-            目前共计 3 个标签
+            目前共计 6 个标签
         </div>
         <div class="tag-cloud-tags">
-          <a href="/tags/MarkDown/" style="font-size: 12px; color: #ccc">MarkDown</a> <a href="/tags/Mou/" style="font-size: 12px; color: #ccc">Mou</a> <a href="/tags/启程/" style="font-size: 12px; color: #ccc">启程</a>
+          <a href="/tags/Algolia/" style="font-size: 12px; color: #ccc">Algolia</a> <a href="/tags/Hexo/" style="font-size: 12px; color: #ccc">Hexo</a> <a href="/tags/MarkDown/" style="font-size: 12px; color: #ccc">MarkDown</a> <a href="/tags/Mou/" style="font-size: 12px; color: #ccc">Mou</a> <a href="/tags/NexT/" style="font-size: 12px; color: #ccc">NexT</a> <a href="/tags/启程/" style="font-size: 12px; color: #ccc">启程</a>
         </div>
       </div>
     
@@ -362,7 +366,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -379,7 +383,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -434,7 +438,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
