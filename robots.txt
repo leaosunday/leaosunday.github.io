@@ -1,0 +1,13 @@
+# hexo robots.txt
+User-agent: *
+Allow: /
+Allow: /archives/
+
+Disallow: /lib/   
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /fancybox/
+
+Sitemap: http://www.leaosunday.cc/sitemap.xml
+Sitemap: http://www.leaosunday.cc/baidusitemap.xml
