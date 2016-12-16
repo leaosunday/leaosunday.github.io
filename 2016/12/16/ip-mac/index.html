@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="NexT,Algolia,Hexo," />
+  <meta name="keywords" content="IP,MAC,计算机网络," />
 
 
 
@@ -92,34 +92,32 @@
 
 
 
-<meta name="description" content="使用过Hexo中Next主题的小伙伴们一定已经深陷其中摆脱不了了，但是跟着官档走的时候大家才发现到处都是坑。。这篇文章就是想和大家分享一下我在配置的时候遇到的各种坑。
+<meta name="description" content="最近计算机网络学习的过程中有一个问题搞得不太清楚，就是有了IP地址明明已经可以定位一台主机了为什么还要MAC地址，还特意弄一个ARP协议，感觉有点多此一举。特意上网查了一下，发现了知乎上就有很不错的答案，特意记录一下。
 
-友情链接
+友情链接：
 
-NexT官档">
+有了 IP 地址，为什么还要用 MAC 地址？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NexT官档中的Bugs">
-<meta property="og:url" content="http://leaosunday.cc/2016/12/14/doc-bug/index.html">
+<meta property="og:title" content="有了IP地址，为什么还要用MAC地址？">
+<meta property="og:url" content="http://leaosunday.cc/2016/12/16/ip-mac/index.html">
 <meta property="og:site_name" content="LuckyBamboo的蔡园">
-<meta property="og:description" content="使用过Hexo中Next主题的小伙伴们一定已经深陷其中摆脱不了了，但是跟着官档走的时候大家才发现到处都是坑。。这篇文章就是想和大家分享一下我在配置的时候遇到的各种坑。
+<meta property="og:description" content="最近计算机网络学习的过程中有一个问题搞得不太清楚，就是有了IP地址明明已经可以定位一台主机了为什么还要MAC地址，还特意弄一个ARP协议，感觉有点多此一举。特意上网查了一下，发现了知乎上就有很不错的答案，特意记录一下。
 
-友情链接
+友情链接：
 
-NexT官档">
-<meta property="og:image" content="http://oi4llr6gh.bkt.clouddn.com/joke.jpg">
-<meta property="og:image" content="http://oi4llr6gh.bkt.clouddn.com/swiftype.jpg">
-<meta property="og:image" content="http://oi4llr6gh.bkt.clouddn.com/algolia.jpg">
-<meta property="og:image" content="http://oi4llr6gh.bkt.clouddn.com/search.jpg">
-<meta property="og:image" content="http://oi4llr6gh.bkt.clouddn.com/rss.jpg">
-<meta property="og:updated_time" content="2016-12-15T03:35:15.000Z">
+有了 IP 地址，为什么还要用 MAC 地址？">
+<meta property="og:image" content="https://pic3.zhimg.com/7e6a71596fd61bf84b8840605ad7c726_r.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/8411ea2a0904fb0b35456e1d1b577714_r.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-f45e545c7aeaa45c28f0a1179e63ea40_b.png">
+<meta property="og:updated_time" content="2016-12-16T04:02:17.830Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NexT官档中的Bugs">
-<meta name="twitter:description" content="使用过Hexo中Next主题的小伙伴们一定已经深陷其中摆脱不了了，但是跟着官档走的时候大家才发现到处都是坑。。这篇文章就是想和大家分享一下我在配置的时候遇到的各种坑。
+<meta name="twitter:title" content="有了IP地址，为什么还要用MAC地址？">
+<meta name="twitter:description" content="最近计算机网络学习的过程中有一个问题搞得不太清楚，就是有了IP地址明明已经可以定位一台主机了为什么还要MAC地址，还特意弄一个ARP协议，感觉有点多此一举。特意上网查了一下，发现了知乎上就有很不错的答案，特意记录一下。
 
-友情链接
+友情链接：
 
-NexT官档">
-<meta name="twitter:image" content="http://oi4llr6gh.bkt.clouddn.com/joke.jpg">
+有了 IP 地址，为什么还要用 MAC 地址？">
+<meta name="twitter:image" content="https://pic3.zhimg.com/7e6a71596fd61bf84b8840605ad7c726_r.jpg">
 
 
 
@@ -147,13 +145,13 @@ NexT官档">
 
 
 
-  <link rel="canonical" href="http://leaosunday.cc/2016/12/14/doc-bug/"/>
+  <link rel="canonical" href="http://leaosunday.cc/2016/12/16/ip-mac/"/>
 
 
 
 
 
-  <title> NexT官档中的Bugs | LuckyBamboo的蔡园 </title>
+  <title> 有了IP地址，为什么还要用MAC地址？ | LuckyBamboo的蔡园 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -332,7 +330,7 @@ NexT官档">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://leaosunday.cc/2016/12/14/doc-bug/">
+  <link itemprop="mainEntityOfPage" href="http://leaosunday.cc/2016/12/16/ip-mac/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="LuckyBamboo">
@@ -356,7 +354,7 @@ NexT官档">
             
             
               
-                NexT官档中的Bugs
+                有了IP地址，为什么还要用MAC地址？
               
             
           </h1>
@@ -369,8 +367,8 @@ NexT官档">
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-14T18:31:37+08:00">
-                2016-12-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-16T11:26:46+08:00">
+                2016-12-16
               </time>
             
 
@@ -388,8 +386,8 @@ NexT官档">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
                   </a>
                 </span>
 
@@ -403,8 +401,8 @@ NexT官档">
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/14/doc-bug/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/14/doc-bug/" itemprop="commentCount"></span>
+                <a href="/2016/12/16/ip-mac/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/16/ip-mac/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -414,7 +412,7 @@ NexT官档">
 
           
           
-             <span id="/2016/12/14/doc-bug/" class="leancloud_visitors" data-flag-title="NexT官档中的Bugs">
+             <span id="/2016/12/16/ip-mac/" class="leancloud_visitors" data-flag-title="有了IP地址，为什么还要用MAC地址？">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -445,31 +443,28 @@ NexT官档">
 
       
         <blockquote>
-<p>使用过Hexo中Next主题的小伙伴们一定已经深陷其中摆脱不了了，但是跟着官档走的时候大家才发现到处都是坑。。这篇文章就是想和大家分享一下我在配置的时候遇到的各种坑。</p>
+<p>最近计算机网络学习的过程中有一个问题搞得不太清楚，就是有了IP地址明明已经可以定位一台主机了为什么还要MAC地址，还特意弄一个ARP协议，感觉有点多此一举。特意上网查了一下，发现了知乎上就有很不错的答案，特意记录一下。</p>
 </blockquote>
-<p><strong>友情链接</strong></p>
+<p><strong>友情链接：</strong></p>
 <ul>
-<li><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">NexT官档</a></li>
+<li><a href="https://www.zhihu.com/question/21546408" target="_blank" rel="external">有了 IP 地址，为什么还要用 MAC 地址？</a></li>
 </ul>
 <a id="more"></a>
-<p>使用过Hexo中Next主题的小伙伴们一定已经深陷其中摆脱不了了，但是跟着官档走的时候大家才发现到处都是坑。。这篇文章就是想和大家分享一下我在配置的时候遇到的各种坑。</p>
-<p><img src="http://oi4llr6gh.bkt.clouddn.com/joke.jpg" alt="坑爹~"></p>
-<h2 id="Swiftype"><a href="#Swiftype" class="headerlink" title="Swiftype"></a>Swiftype</h2><p><img src="http://oi4llr6gh.bkt.clouddn.com/swiftype.jpg" alt="swiftype"></p>
-<p>这是官档教程的截图，还提供了一个外链教程供大家学习和配置，得到大家支持的Swiftype搜索有着良好的口碑和用户体验。</p>
-<p><strong>但是！！！</strong></p>
-<p>当我屁颠屁颠跑去<a href="http://swiftype.com" target="_blank" rel="external">Swiftype官网</a>注册的时候，发现注册需要公司的邮箱，这是什么鬼？后来各种搜索之后才知道原来注册不再免费了~</p>
-<h2 id="Algolia"><a href="#Algolia" class="headerlink" title="Algolia"></a>Algolia</h2><p>机智的我立马换了Algolia作搜索服务。</p>
-<p><img src="http://oi4llr6gh.bkt.clouddn.com/algolia.jpg" alt="algolia"></p>
-<p>“友好”的官档再次给出了详细的配置教程~</p>
-<p><strong>但是！！！</strong></p>
-<p>按照教程配置完成之后发现<img src="http://oi4llr6gh.bkt.clouddn.com/search.jpg" alt="">按钮并没有什么卵用。。根本就不是一个button。</p>
-<p>经过一番搜索之后解决了这个问题。</p>
-<p>在<code>next\layout\\_partials</code>目录下的<code>header.swig</code>文件中修改：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&#123;% if hasSearch %&#125;</div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"menu-item menu-item-search"</span>&gt;</span></div><div class="line">   &#123;% if theme.swiftype_key %&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">class</span>=<span class="string">"st-search-show-outputs"</span>&gt;</span></div><div class="line">   &#123;% elseif config.search %&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">class</span>=<span class="string">"popup-trigger"</span>&gt;</span></div><div class="line"></div><div class="line">   <span class="comment">&lt;!--增加的代码 start--&gt;</span></div><div class="line">   &#123;% elseif theme.algolia %&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">class</span>=<span class="string">"popup-trigger"</span>&gt;</span></div><div class="line">   <span class="comment">&lt;!-- 增加的代码 end--&gt;</span></div><div class="line"></div><div class="line">   &#123;% endif %&#125;</div><div class="line">    &#123;% if theme.menu_icons.enable %&#125;</div><div class="line">    	<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"menu-item-icon fa fa-search fa-fw"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line">    &#123;% endif %&#125;</div><div class="line">    &#123;&#123; __('menu.search') &#125;&#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
-<h2 id="RSS"><a href="#RSS" class="headerlink" title="RSS"></a>RSS</h2><p>对于RSS的设置官方文档再次友善地给出了善意的提醒~</p>
-<p><img src="http://oi4llr6gh.bkt.clouddn.com/rss.jpg" alt="官档截图"></p>
-<p>好吧说一说在这里遇到的坑，不知道为啥大家用<code>npm install hexo-generator-feed</code>都是生效的，而我的<code>public</code>文件夹中没有atom.xml啊！！然后发现有遇到同样遭遇的小伙伴后解决了问题，解决方法：<code>npm install hexo-generator-feed --save</code></p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>目前只发现了上述两点小问题，以后发现了其他问题再来补充。</p>
+<h2 id="知乎原问题"><a href="#知乎原问题" class="headerlink" title="知乎原问题"></a>知乎原问题</h2><h4 id="有了-IP-地址，为什么还要用-MAC-地址？"><a href="#有了-IP-地址，为什么还要用-MAC-地址？" class="headerlink" title="有了 IP 地址，为什么还要用 MAC 地址？"></a>有了 IP 地址，为什么还要用 MAC 地址？</h4><p>估计很多人都有这个疑问，但没见哪本书上解释清楚，都只是描述IP是什么，MAC是什么。当数据包到达局域网后，完全可以直接送到对应的IP地址主机，为什么还要询问一下对应IP主机的MAC地址？<br>一个邮递员拿着地址详细到教室的一封信，收件人是小明，教室里没有重名的，邮递员问“小明的学号是多少？”，小明站起来回答“150807”，然后小明坐下，然后邮递员说“学号150807的过来拿信”，小明站起拿信。哎，好像重复了点什么。</p>
+<h2 id="个人认为较为靠谱的回答"><a href="#个人认为较为靠谱的回答" class="headerlink" title="个人认为较为靠谱的回答"></a>个人认为较为靠谱的回答</h2><p>作者：向往美<br>链接：<a href="https://www.zhihu.com/question/21546408/answer/53576595" target="_blank" rel="external">https://www.zhihu.com/question/21546408/answer/53576595</a><br>来源：知乎<br>著作权归作者所有，转载请联系作者获得授权。</p>
+<p>我来说说我的理解吧。<br>举例说明： 我们知道，出于历史的原因，这个世界上出现了很多的国家和民族，他们都使用不同的语言<br>比如，我要和法国人通信，就要学会法语，和日本人通信，就要学会日语，同理，要学会德语、意大利语、西班牙语。。。<br>如果每和一个国家通信，就要学会对方的语言，那可要累死了。<br>所以，最好的办法，就是大家都用1种语言通信。这样只要学会一门外语就可以跟所有的国家通信了。<br>这种“世界通用语言”可以通过2种途径得到：现成的，和新发明的<br>工业革命以后，日不落帝国是世界的中心，其直接继承者美国也是世界的中心，它们都使用英语，于是英语借助其强势地位，成为世界的通用的语言。<br>同时，“世界语”也是一种世界通用语言，与英语不同，世界语是“新发明”的语言（当然也借鉴了其它语言的规则），也就是说，没有哪个民族是”世界语民族“，也不可能发现某个1000前的石碑，上刻世界语。。。<br>因为没有一个国家的母语是世界语，所以在用世界语交流的时候必须要经过一个“翻译”的过程：把本国语言，翻译成世界语。<br>所以我们可以说，世界语是一种“不完备”的语言，它必须依赖于其它的语言才能使用，或者说：运行于其它语言之上。<br>出于历史的原因，“电脑网络”是从无到有、从小到大发展起来的。<br>有很多的网络被发明出来，这些网络各自使用自己的协议（语言），互不兼容（不同的语言相互不能理解），<br>有些网络只应用于小面积，比如一个家庭，一栋楼房，线路长度按米、百米计算。这类网络叫做“局域网”<br>有些网络应用于很大的面积，比如我办理了宽带，这样我和电信公司之间就有一条长达N公里线路，或者电信公司和电信公司之间有长达几十公里的线路。这类网络叫做“广域网”。<br>因特网就是“网络世界语”，各种网络都用1种协议：因特网协议（TCP/IP协议族）交流，所以各种网络都要有个“翻译”的过程：把本网协议，翻译成因特网协议。<br>正如上文所言，世界语是“不完备”的语言，因为大家使用世界语需要一个翻译的过程<br>所以，因特网协议也是不完备的协议，其它网络在运行TCP/IP协议族的时候，也需要一个翻译的过程<br>这就是MAC地址之所以存在的核心要点，下面详述。</p>
+<p>在因特网出现之前就已经有很多的网络出现了，而且因特网并不是第一个全球大网（很明显，历史悠久的有线电话网络就是全球大网）<br>然后，因特网出现了。<br>需要注意的是，因特网在诞生之初，并没有想到自己会成为一个全球性的大网，所以没有针对全球网络的特点进行设计，这就留下了一些短板（比如IP地址不够，协议有漏洞，想想大名鼎鼎的ARP协议漏洞 ）。因特网成功以后，这些漏洞被IPV6弥补</p>
+<p>设计因特网的初衷，是为了应付对苏联的核战争（当时还存在苏联）。<br>你可能听说过“恐怖平衡”这个概念，说的是美苏任何一方如果先发制人的向对方发动核战争，对方的核报复也会让自己身处火海，所以谁也不敢首先使用核武器，从而避免了核大战。<br>但很明显，大家追求的是“优势”而不是“平衡”，这种“平衡”也是不得已而为之，如果我方技术高超，有能力取得核战争的胜利，那就可以把这种可笑的“平衡”扔进太平洋。<br>美国国防部在思考：<br>我往苏联扔一颗核弹，苏联的军事指挥通信系统就垮掉了，没有了指挥，再强大的军队也成了无头苍蝇，没有了战斗力。<br>可苏联往美国扔核弹，美国也会有同样的结局。<br>可是。。。如果我设计一种通信网络结构，这种结构”容灾性“很强、很”健壮“、很”高可用“ ，苏联的1颗核弹灭不了，2颗核弹灭不了，3颗核弹才可以灭。而我1颗核弹就可以灭了它。这样我就有了喘息的余地，我就可能成为核战争的胜利者。<br>因特网就是在这种思考之下诞生了。<br>因特网能抵抗核爆炸？真有这么神奇么？看看图就知道了。<br>先说说传统的电话网拓扑：</p>
+<p><img src="https://pic3.zhimg.com/7e6a71596fd61bf84b8840605ad7c726_r.jpg" alt=""></p>
+<p>电话网是一个典型的星形网络，用户A要给用户F打电话，其路径就是A-K-F<br>同理，用户C要给用户G打电话，路径就是C-K-G<br>也就是说，任何用户之间要打电话，都必不可免的要经过中央交换机K<br>所以你知道为何在打仗的时候，电信局是首要被攻击目标了，因为电信局里面放着电话交换机。如果要破坏这个城市的电话网络，我不用挨家挨户砸电话，只要破坏掉电信局的电话交换机，就万事OK了！<br>那么该怎样防止这种情况的发生呢？<br>方案A，我隐藏交换机的位置所在，让敌方找不到交换机在哪<br>但现代战场，天上有卫星，地下有监听，在严密的监视网络面前，想要将自己隐匿起来，已经不容易了。<br>那就方案B，我在交换机周围布置重兵，建设防御工事，就算你发现了也攻不进来。<br>但现代化的武器威力巨大，再加上核武器，再多的人、再坚固的工事也难以抵挡。<br>所以，思想家们另辟蹊径，在网络的拓扑结构上做文章，改“集中式”为”分布式“，于是因特网出现了。<br>因特网是怎么避免核心设备被攻击，让网络能够在战争中存活更长的时间呢？<br>见下图：</p>
+<p><img src="https://pic1.zhimg.com/8411ea2a0904fb0b35456e1d1b577714_r.jpg" alt=""></p>
+<p>可以看到，网络拓扑由星形网络，变成了网状网络。<br>这里的每个用户（或称节点）都是一个电话交换机（对于因特网，就是路由器）<br>此时，如果A和H打电话，那路径可多了：<br>最短距离，当然是A-H，所以优先走A-H。<br>但如果A-H断掉了，还可以走A-D-H、A-E-H、A-E-F-B-D-H。。。。<br>所以，A-H断了没事、B-C断了没事，C-D断了没事、F-G断了没事。。。<br>由此可见，网状网络的是一种非常“高可用”的网络，容灾性很好。<br>这些节点的地位（功能）都是相同的，不存在某个节点比另外的节点更重要的情况。所以一个节点出了问题，另外的节点就可以取而代之。<br>而星形网络就不是这样，很明显中央节点比其它节点更重要，中央节点失效，其它节点无法替代，整网就失效了。<br>随着节点数的增加，节点之间的可用线路的数量呈指数方式增加，函数是<code>N*(N-1)/2。</code><br>这个简单的函数可是有很大的威力的，请看下图：<br><img src="https://pic1.zhimg.com/v2-f45e545c7aeaa45c28f0a1179e63ea40_b.png" alt=""></p>
+<p>相比于上图电话的星型网络，如果要破坏这样的一张网状网络，又该如何下手呢？<br>因特网最初是国防通信网络（APRA-阿帕网），后演变成连接各大学、政府部门和科研机构的教学科研网，最后演变为烧钱的商业化网络。<br>以上所说的知识面叫做“因特网的体系结构”。</p>
+<p>再说说因特网协议：TCP/IP协议族<br>从一开始，因特网就没有想过成为世界性大网，所以，因特网的协议，从制定之初就是”不完备“的<br>也就是说，因特网必须要基于其它网络之上，依靠其它的网络才能完成自身的功能。<br>就像是世界语是不完备的，必须要基于其它语言之上，才能实现其自身的功能。<br>如果世界语运行于汉语之上，那就是：<br>世界语 over 汉语<br>比如，已经存在一种局域网技术，叫做”以太网“，那么好，因特网就运行于以太网之上，英文写作：<br>TCP/IP over Ethernet<br>注：TCP/IP是专为因特网开发的一系列协议当中的2个协议，因这2个协议最重要（同时也最出名），就用这2个协议代言因特网了。<br>还有一种城域网技术叫做“令牌环网 ”，那么好，因特网就运行在令牌环网之上 ，英文写作：<br>TCP/IP over Token-ring<br>还有一种广域网技术叫做”ATM”，那么好，因特网就运行于ATM之上，英文写作：<br>TCP/IP over ATM<br>如果你想要因特网运行于USB呢？自然就是：<br>TCP/IP over USB<br>。。。。。。。。。。。</p>
+<p>你肯定知道OSI的7层协议，因特网协议族（TCP/IP协议族）并没有覆盖完整的7层协议 （只定义了第3层和第4层），很明显，因特网没有定义水晶头的形状、网线里有几根铜线、铜线里面传输的电压是多少等等参数，这些参数是诸如以太网这样的网络定义的。<br>那么，为什么因特网不定义这些参数呢？<br>上面说了：“也许”从一开始，因特网就没有想到自己会成为一个世界大网，所以就没有定义得这么复杂。<br>但也有另一种可能：其实一种网络技术，不一定要“大而全”，从1层到7层全制定，可以只制定其中几层。<br>比如以太网定义了1~2层（物理层、数据链路层），因特网定义了3~4层（网络层、传输层），其它公司定义了5~7层（SQL、JPEG、HTTP）<br>这样，不同的网络、不同的协议之间相互配合就可以了。<br>就像是，我是一家生产火车的厂家，我当然可以生产铁轨，制定铁轨的宽度，生产火车车厢。<br>但既然已经有大量的铁轨铺设完毕了，那我就不用管铁轨的事情了。<br>火车运行于现成的铁轨之上就可以了<br>在这里，铁轨就是以太网（局域网）、ATM（广域网）或者其它现存的2层网，火车就是因特网。<br>所以，从来不存在“纯粹的因特网”，因为因特网没有定义底层，只存在TCP/IP over XXX</p>
+<p>经过以上的解释，你就知道为何一定需要MAC地址了：<br>既然大家都是“网”，那么，每种网都要给网上的节点（电脑）分配“地址”。<br>以太网的MAC地址格式是12个16进制数，比如0800200A8C6D<br>因特网IP地址格式是4个点分10进制数，比如192.168.201.160<br>刚才说了，不存在“纯粹的因特网”，所以因特网必须要基于以太网之上才能工作，所以就是“同时运行了2个网”<br>就像是世界语必须要基于中文之上才能工作，所以就是“同时说了2种语言”<br>所以，就必须要“翻译”<br>也就是把以太网的MAC地址，翻译成因特网的IP地址，这就是ARP的作用<br>假如我的中文名字叫做“刘涛”，如果要翻译成世界语，就肯定要有个世界语的名字（假设叫LIUTAO）</p>
+<p>同样是名字：<br>刘涛→翻译成→LIUTAO<br>同样是地址：<br>21-35-6D-1F-83-9E→翻译成→10.42.90.8</p>
+<p>当然了，如果因特网从开始制定之初，就定义了从物理层到传输层的协议，那么因特网就不再依赖于其它任何的网络，这时就不用什么MAC地址了。<br>讲完了。<br>我是不是太罗嗦了。。。。</p>
 
       
     </div>
@@ -519,11 +514,11 @@ NexT官档">
       
         <div class="post-tags">
           
-            <a href="/tags/NexT/" rel="tag"># NexT</a>
+            <a href="/tags/IP/" rel="tag"># IP</a>
           
-            <a href="/tags/Algolia/" rel="tag"># Algolia</a>
+            <a href="/tags/MAC/" rel="tag"># MAC</a>
           
-            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
           
         </div>
       
@@ -532,8 +527,8 @@ NexT官档">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/14/mou-doc/" rel="next" title="Mou-帮助文档">
-                <i class="fa fa-chevron-left"></i> Mou-帮助文档
+              <a href="/2016/12/16/socket-type/" rel="next" title="SOCKET常见的三种类型">
+                <i class="fa fa-chevron-left"></i> SOCKET常见的三种类型
               </a>
             
           </div>
@@ -541,10 +536,6 @@ NexT官档">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/15/on-the-way/" rel="prev" title="On the way">
-                On the way <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -559,10 +550,10 @@ NexT官档">
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/12/14/doc-bug/"
-     data-title="NexT官档中的Bugs"
+        <div class="ds-share flat" data-thread-key="2016/12/16/ip-mac/"
+     data-title="有了IP地址，为什么还要用MAC地址？"
      data-content=""
-     data-url="http://leaosunday.cc/2016/12/14/doc-bug/">
+     data-url="http://leaosunday.cc/2016/12/16/ip-mac/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -592,8 +583,8 @@ NexT官档">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/14/doc-bug/"
-           data-title="NexT官档中的Bugs" data-url="http://leaosunday.cc/2016/12/14/doc-bug/">
+      <div class="ds-thread" data-thread-key="2016/12/16/ip-mac/"
+           data-title="有了IP地址，为什么还要用MAC地址？" data-url="http://leaosunday.cc/2016/12/16/ip-mac/">
       </div>
     
   </div>
@@ -917,7 +908,7 @@ NexT官档">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Swiftype"><span class="nav-number">1.</span> <span class="nav-text">Swiftype</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Algolia"><span class="nav-number">2.</span> <span class="nav-text">Algolia</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RSS"><span class="nav-number">3.</span> <span class="nav-text">RSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#知乎原问题"><span class="nav-number">1.</span> <span class="nav-text">知乎原问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#有了-IP-地址，为什么还要用-MAC-地址？"><span class="nav-number">1.0.1.</span> <span class="nav-text">有了 IP 地址，为什么还要用 MAC 地址？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人认为较为靠谱的回答"><span class="nav-number">2.</span> <span class="nav-text">个人认为较为靠谱的回答</span></a></li></ol></div>
             
 
           </div>
