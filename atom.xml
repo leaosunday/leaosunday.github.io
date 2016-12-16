@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://leaosunday.cc/"/>
-  <updated>2016-12-16T04:07:53.812Z</updated>
+  <updated>2016-12-16T12:54:27.193Z</updated>
   <id>http://leaosunday.cc/</id>
   
   <author>
@@ -16,11 +16,136 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>hash-py</title>
+    <link href="http://leaosunday.cc/2016/12/16/hash-py/"/>
+    <id>http://leaosunday.cc/2016/12/16/hash-py/</id>
+    <published>2016-12-16T12:45:03.000Z</published>
+    <updated>2016-12-16T12:54:27.193Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>不时会爆出网站的服务器和数据库被盗取，考虑到这点，就要确保用户一些敏感数据（例如密码）的安全性。今天，我们要学的是 hash 背后的基础知识，以及如何用它来保护你的 web 应用的密码。</p>
+</blockquote>
+<p><strong>友情链接：</strong></p>
+<ul>
+<li><a href="http://www.cnblogs.com/hazir/p/hash_function_and_its_importance.html" target="_blank" rel="external">Hash 函数及其重要性</a></li>
+</ul>
+<a id="more"></a>
+<h1 id="Hash-函数及其重要性"><a href="#Hash-函数及其重要性" class="headerlink" title="Hash 函数及其重要性"></a><a href="http://www.cnblogs.com/hazir/p/hash_function_and_its_importance.html" target="_blank" rel="external">Hash 函数及其重要性</a></h1><p>作者：hazir<br>链接：<a href="http://www.cnblogs.com/hazir/p/hash_function_and_its_importance.html" target="_blank" rel="external">http://www.cnblogs.com/hazir/p/hash_function_and_its_importance.html</a><br>来源：博客园</p>
+<p>不时会爆出网站的服务器和数据库被盗取，考虑到这点，就要确保用户一些敏感数据（例如密码）的安全性。今天，我们要学的是 hash 背后的基础知识，以及如何用它来保护你的 web 应用的密码。</p>
+<h2 id="申明"><a href="#申明" class="headerlink" title="申明"></a>申明</h2><p>密码学是非常复杂的一门学科，我不是这方面的专家，在很多大学和安全机构，在这个领域都有长期的研究。</p>
+<p>本文我试图使事情简单化，呈现给大家的是一个 web 应用中安全存储密码的合理方法。</p>
+<h2 id="“Hashing”-做的是什么？"><a href="#“Hashing”-做的是什么？" class="headerlink" title="“Hashing” 做的是什么？"></a>“Hashing” 做的是什么？</h2><p>Hashing 将一段数据（无论长还是短）转成相对较短的一段数据，例如一个字符串或者一个整数。</p>
+<p>这是通过使用单向哈希函数来完成的。“单向” 意味着逆转它是困难的，或者实际上是不可能的。</p>
+<p>加密可以保证信息的安全性，避免被拦截到被破解。Python 的加密支持包括使用 hashlib 的标准算法（例如 MD5 和 SHA），根据信息的内容生成签名，HMAC 用来验证信息在传送过程中没有被篡改。</p>
+<p>一个通常使用的 hash 函数的例子是 <a href="http://docs.python.org/3.3/library/hashlib.html#module-hashlib" target="_blank" rel="external"><strong>md5()</strong></a>，这也是当前在很多不同语言和系统中比较流行的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import hashlib</div><div class="line"></div><div class="line">data = &quot;Hello World&quot;</div><div class="line"></div><div class="line">h = hashlib.md5()</div><div class="line">h.update(data)</div><div class="line">print(h.hexdigest())</div><div class="line"># b10a8db164e0754105b7a99be72e3fe5</div></pre></td></tr></table></figure>
+<p>为了计算一个数据块（这儿是 ASCII 字符串）的 <code>MD5</code> 哈希值或摘要，首先需要创建一个 hash 对象，然后添加数据，再调用 <code>digest()</code> 或者 <code>hexdigest()</code> 函数。本例使用的是 <code>hexdigest()</code> 方法来代替 <code>digest()</code> ，是因为为了更清晰地输出而对结果进行了格式化。如果你能接受输出二进制的摘要值，那么就用 <code>digest()</code>。</p>
+<h2 id="使用-Hash-函数来存储密码"><a href="#使用-Hash-函数来存储密码" class="headerlink" title="使用 Hash 函数来存储密码"></a>使用 Hash 函数来存储密码</h2><p><strong>用户注册的过程通常是这样的：</strong></p>
+<ul>
+<li>用户填写注册表单，包括密码这一项</li>
+<li>web 脚本将所有的信息存储在数据库中</li>
+<li>然而，密码在存储之前需要通过 hash 函数进行转化</li>
+<li>最原始版本的密码并没有保存在任何地方，因此从技术上讲它消失了</li>
+</ul>
+<p><strong>用户登录的过程：</strong></p>
+<ul>
+<li>用户输入用户名和密码</li>
+<li>脚本用同样的 hash 函数来转化密码</li>
+<li>脚本找到记录在数据库中的用户信息，读取保存 hash 之后的密码</li>
+<li>比较两者的值，如果匹配了就完成了登录</li>
+</ul>
+<p>注意原始密码不会存储在任何地方！那么如果数据库被盗，那么用户的登录信息不会被盗，是吗？答案是“根据情况来定”。让我们看看一些潜在的问题：</p>
+<h2 id="问题1：Hash-冲突"><a href="#问题1：Hash-冲突" class="headerlink" title="问题1：Hash 冲突"></a>问题1：Hash 冲突</h2><p>当两个不同的输入数据产生相同的 Hash 结果时，这就发生了 Hash 冲突。发生的概率依赖于你所使用的函数。</p>
+<h3 id="如果利用呢？"><a href="#如果利用呢？" class="headerlink" title="如果利用呢？"></a>如果利用呢？</h3><p>作为例子，我使用一些老的脚本，它们使用 <a href="http://docs.python.org/3.3/library/binascii.html#binascii.crc32" target="_blank" rel="external"><strong>crc32()</strong></a> 来 Hash 密码。这个函数会产生 32 位整数的结果，这意味着仅仅有<code>2^32 (i.e. 4,294,967,296)</code> 种结果。</p>
+<p>让我们来 hash 一个密码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import binascii</div><div class="line">result = binascii.crc32(&apos;supersecretpassword&apos;)</div><div class="line">print(result) #323322056</div></pre></td></tr></table></figure>
+<p>现在，我们假设有人盗取了数据库，有了 hash 值。我们也许并不能将 <code>323322056</code> 转成 <code>supersecretpassword</code>，然而我们能用一个简单的脚本，来找到另一个密码可以转化为相同的 hash 值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import binascii,base64</div><div class="line"></div><div class="line">i = 0</div><div class="line">while True:</div><div class="line">    if binascii.crc32(base64.encodestring(bytes(i,))) == 323322056:</div><div class="line">        print(base64.encodestring(i))</div><div class="line">        i += 1</div></pre></td></tr></table></figure>
+<p>这可能需要运行好一会，但最终会返回一个字符串。我们可以用返回的字符串来代替 <code>supersecretpassword</code>，也同样能登录进入那个用户的账户。</p>
+<p>举例来说，在我电脑运行那个脚本一会之后，得到字符串 <code>MTIxMjY5MTAwNg==</code>，让我们测试一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import binascii</div><div class="line"></div><div class="line">print(binascii.crc32(&quot;supersecretpassword&quot;))</div><div class="line">#323322056</div><div class="line"></div><div class="line">print(binascii.crc32(&quot;MTIxMjY5MTAwNg==&quot;))</div><div class="line">#323322056</div></pre></td></tr></table></figure>
+<h3 id="如何避免呢？"><a href="#如何避免呢？" class="headerlink" title="如何避免呢？"></a>如何避免呢？</h3><p>现在，一个强大的家庭 PC 机就可以用来每秒钟运行一个哈希函数十亿次之多，那么我们需要一个产生非常大范围数的哈希函数。</p>
+<p>举例来说，<code>md5()</code> 可能就比较适合，因为它产生 128 位哈希值，也就是 340,282,366,920,938,463,463,374,607,431,768,211,456 可能的结果。通过遍历找到冲突不可能的，然而有些人仍然这样做（参考<a href="http://www.mscs.dal.ca/~selinger/md5collision/" target="_blank" rel="external"><strong>这里</strong></a>)。</p>
+<h3 id="Sha1"><a href="#Sha1" class="headerlink" title="Sha1"></a>Sha1</h3><p><strong>Sha1()</strong> 是一个更好的替代方案，它会产生甚至长达 160 位的 hash 值。</p>
+<h2 id="问题2：彩虹表"><a href="#问题2：彩虹表" class="headerlink" title="问题2：彩虹表"></a>问题2：彩虹表</h2><p>甚至我们解决了冲突的问题，我们还不能确保安全。</p>
+<p>彩虹表（rainbow table）是通过计算一些常用的单词和它们的组合的 hash 值而创建的。这些表有多达上百万或上亿项。</p>
+<p>举例来说，你可以遍历一个字典，为每个单词产生一个 hash 值。你也可以将它们进行组合，也为组合的单词产生 hash 值。这还没完，你甚至可以以数字插入单词的开始、结尾、中间，将它们也存入表中。</p>
+<p>考虑到现在存储系统非常廉价，可以产生和使用上 G 量级的彩虹表。</p>
+<h3 id="如何利用呢？"><a href="#如何利用呢？" class="headerlink" title="如何利用呢？"></a>如何利用呢？</h3><p>让我们想象一下，一个大的数据库被盗，里面有一千万的密码哈希值。在彩虹表中搜索与数据库中密码哈希值的匹配是件相当简单的事，不是所有密码都能找到，但也不是都找不到！它们中的一些肯定可以找到！</p>
+<h3 id="如何避免呢？-1"><a href="#如何避免呢？-1" class="headerlink" title="如何避免呢？"></a>如何避免呢？</h3><p>我们尝试添加盐化(salt)字符串来解决，下面是个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">import hashlib</div><div class="line"></div><div class="line">password = &quot;EasyPassword&quot;</div><div class="line"></div><div class="line">print(hashlib.sha1(password).hexdigest())</div><div class="line"># ff166c2477f864d609ca8111680bfa387eb4e509</div><div class="line"></div><div class="line">salt = &quot;f#@V)Hu^%Hgfds&quot;</div><div class="line"></div><div class="line">print(hashlib.sha1(salt + password).hexdigest())</div><div class="line"># 3e7edaceb96becaf69ae7e73073812ea136188e2</div></pre></td></tr></table></figure>
+<p>我们做的很简单，在 hash 密码之前将“盐化”字符串与用户密码连接，这样很显然 hash 的结果和之前建立的彩虹表没有一个匹配。但是，我们还不够安全！</p>
+<h2 id="问题3：彩虹表问题（续）"><a href="#问题3：彩虹表问题（续）" class="headerlink" title="问题3：彩虹表问题（续）"></a>问题3：彩虹表问题（续）</h2><p>记住，在数据库被盗之后，还可以重建彩虹表。</p>
+<h3 id="如何利用呢？-1"><a href="#如何利用呢？-1" class="headerlink" title="如何利用呢？"></a>如何利用呢？</h3><p>即使使用了“盐化”字符串，仍然有可能随着数据库被盗而破解。他们所要做的是重新产生新的彩虹表，但这次他们会连接“盐化”字符串到每个密码上。</p>
+<p>举例来说，通常彩虹表中 <code>easypassword</code> 可能存在，但在新的彩虹表中，也存在 <code>f#@V)Hu^%Hgfdseasypassword</code> 这样的密码。当他们将上千万条盗来的经过盐化的哈希值与这张新彩虹表比较时，他们也会能找到一些相同的匹配。</p>
+<h3 id="如何避免呢？-2"><a href="#如何避免呢？-2" class="headerlink" title="如何避免呢？"></a>如何避免呢？</h3><p>我们使用唯一的 “salt” 替代，每个用户都不一样。</p>
+<p>一种备选 salt 是从数据库中取得用户的 ID：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hashlib.sha1(userid + password).hexdigest()</div></pre></td></tr></table></figure>
+<p>基于的假设是用户的 ID 号永远不会改变，一般这都是成立的。</p>
+<p>我们也可以为每个用户产生一个随机字符串，把它作为这个唯一的“盐化”字符串。但是我们需要保证要将这个唯一的“盐化”字符串保存在用户记录的某个位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">import hashlib, os</div><div class="line"></div><div class="line">def unique_salt():</div><div class="line">    return hashlib.sha1(os.urandom(10)).hexdigest()[:22]</div><div class="line"></div><div class="line">salt = unique_salt()</div><div class="line">password = &quot;&quot; # str or int</div><div class="line">hash = hashlib.sha1(salt + str(password)).hexdigest()</div><div class="line">print(hash)</div><div class="line"># 37dec03d2761122819f8708e6d5c8392ee02b40d</div></pre></td></tr></table></figure>
+<p>这种方法有效预防了使用彩虹表破解，因为现在每一个密码都经过不同的值盐化过，攻击者需要生成一千万个独立的彩虹表，这实际上是不现实的。</p>
+<h2 id="问题4：Hash-速度"><a href="#问题4：Hash-速度" class="headerlink" title="问题4：Hash 速度"></a>问题4：Hash 速度</h2><p>大多 Hash 函数在设计时都注重速度，因为它们常用于计算大数据集和文件的 checksum 值，来检查数据的完整性。</p>
+<h3 id="如何利用呢？-2"><a href="#如何利用呢？-2" class="headerlink" title="如何利用呢？"></a>如何利用呢？</h3><p>就像我之前提到的，一个现代 PC 机带有强大的 GPU（或者显卡）可以完成每秒钟上千次的 hash 运算。这种方法，他们可以使用暴力攻击法，尝试每个可能的密码。</p>
+<p>你可能认为需要不少于 8 位长度的密码可能避免暴力破解，让我们看下面的分析来决定是否真的能避免：</p>
+<ul>
+<li>如果密码包含小写字母、大写字母以及数字，也就是有 <code>62 (26+26+10)</code> 种可能的字符。</li>
+<li>一个 8 位长的字符串就有 <code>62^8</code> 可能的组合，比 218 万亿略小一点。</li>
+<li>以每秒十亿的 hash 速率，大约在 60 个小时内就可以破解。</li>
+</ul>
+<p>如果是 6 位长的密码，这也相当普遍，只需要在 1 分钟之内就可以破解。</p>
+<p>如果要求 9 位或 10 位长度的密码，这样就会让你的用户体验非常不好。</p>
+<h3 id="如何避免呢？-3"><a href="#如何避免呢？-3" class="headerlink" title="如何避免呢？"></a>如何避免呢？</h3><p>使用一个低速的 hash 函数。</p>
+<p>假设你是用一个 hash 函数，在同样的硬件下，每秒钟只能进行 100 万次 hash 运算，而不是 10 亿次，暴力破解将会花费比以前多出 1000 倍的时间。那么 60 个小时将会变成将近 7 年！</p>
+<p>一种你可以实现的方法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">import hashlib</div><div class="line"></div><div class="line">def my_hash(password, salt):</div><div class="line">    hash = hashlib.sha1(salt + password).hexdigest()</div><div class="line"></div><div class="line">    for i in range(1000):</div><div class="line">        hash = hashlib.sha1(hash).hexdigest()</div><div class="line">    return hash</div><div class="line"></div><div class="line">print(my_hash(&quot;12345&quot;, &quot;f#@V)Hu^%Hgfds&quot;))</div></pre></td></tr></table></figure>
+<p>或者，你可以使用支持 “开销参数”（例如 <strong>BLOWFISH</strong>）的算法。在 Python 中，可以利用 <strong>py-crypt</strong> 库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import bcrypt</div><div class="line"></div><div class="line">def my_hash(password):</div><div class="line">    return bcrypt.hashpw(password, bcrypt.gensalt(10))</div><div class="line"></div><div class="line">print(my_hash(&quot;atdk&quot;))</div><div class="line">#$2a$10$WNhGOdVhoZrrKgwxGa2VIuzfAvm9oFWZF9PIVtLIoU5LQOVGLuLrq</div></pre></td></tr></table></figure>
+<p><strong>注意输出：</strong></p>
+<ol>
+<li>第一个值是 <code>$2a</code>，表明我们使用的是 BLOWFISH 算法。</li>
+<li>这种情形下第二个值是 <code>$10</code>，是“开销参数”。是执行迭代的次数以 2 为对数的结果，它将会迭代<code>(10 =&gt; 2^10 = 1024)</code> 次。这个数值可以在 4 到 31 范围内变化。</li>
+</ol>
+<p>让我们运行例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">import bcrypt, os, hashlib</div><div class="line"></div><div class="line">def my_hash(password, unique_salt):</div><div class="line">    return bcrypt.hashpw(password, bcrypt.gensalt(10) + unique_salt)</div><div class="line"></div><div class="line">def unique_salt():</div><div class="line">    return hashlib.sha1(os.urandom(10)).hexdigest()[:22]</div><div class="line"></div><div class="line">password = &quot;verysecret&quot;</div><div class="line"></div><div class="line">print(my_hash(password, unique_salt()))</div><div class="line"># $2a$10$aHx0q.FE/tGvGWzlm6yePemYx9SAsBP2iSiy/uFx7pyjpy980Hita</div></pre></td></tr></table></figure>
+<p>结果包括算法（$2a），开销参数（$10），使用的 22 位 salt，剩下的是计算的 hash 值。让我们测试一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">import bcrypt, os, hashlib</div><div class="line"></div><div class="line"># assume this was pulled from the database</div><div class="line">hash = &quot;$2a$10$6XDaX/3kNby0jI9Ih/Re7.478DOMZK9OnA2mTxKUP0My.39N.jdky&quot;</div><div class="line"></div><div class="line"># assume this is the password the user entered to log back in</div><div class="line">password = &quot;verysecret&quot;</div><div class="line"></div><div class="line">def check_password(hash, password):</div><div class="line">    salt = hash[:29]</div><div class="line">    new_hash = bcrypt.hashpw(password, salt)</div><div class="line">    return hash == new_hash</div><div class="line"></div><div class="line">if check_password(hash, password):</div><div class="line">    print(&quot;Access Granted&quot;)</div><div class="line">else:</div><div class="line">    print(&quot;Access Denied&quot;)</div></pre></td></tr></table></figure>
+<p>当我们运行时，我们看到输出 “Access Granted!”。</p>
+<h2 id="整合所有的问题"><a href="#整合所有的问题" class="headerlink" title="整合所有的问题"></a>整合所有的问题</h2><p>如果考虑到上面的所有问题，根据我们目前所学的，写一个实用类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">import bcrypt, os, hashlib</div><div class="line"></div><div class="line">class PassHash():</div><div class="line">    def unique_salt(self):</div><div class="line">        return hashlib.sha1(os.urandom(10)).hexdigest()[:22]</div><div class="line"></div><div class="line">    def hash(self, password):</div><div class="line">        return bcrypt.hashpw(password, bcrypt.gensalt(10) + self.unique_salt())</div><div class="line"></div><div class="line">    def check_password(self, hash, password):</div><div class="line">        full_salt = hash[:29]</div><div class="line">        new_hash = bcrypt.hashpw(password, full_salt)</div><div class="line">        return hash == new_hash</div><div class="line"></div><div class="line">obj = PassHash()</div><div class="line"></div><div class="line">a = obj.hash(&quot;12345&quot;)</div><div class="line">print(a) # $2a$10$gBSbmXKanQJOTSabtX4wfOE2RT2mKDFbCY6r7cqCJSk2YPGjIDrou</div><div class="line"></div><div class="line">b = obj.check_password(a, &quot;12345&quot;)</div><div class="line">print(b) # True</div></pre></td></tr></table></figure>
+<p>现在，我们可以在我们的表单中使用该类来 hash 我们密码，确保安全性。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>这种 hash 密码的方法对大多 web 应用已经足够了。别忘记你还可以要求你的用户使用更强的密码，通过强制最小密码长度，组合字符、数字和特殊字符等方法。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;不时会爆出网站的服务器和数据库被盗取，考虑到这点，就要确保用户一些敏感数据（例如密码）的安全性。今天，我们要学的是 hash 背后的基础知识，以及如何用它来保护你的 web 应用的密码。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;友情链接：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/hazir/p/hash_function_and_its_importance.html&quot;&gt;Hash 函数及其重要性&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://leaosunday.cc/categories/Python/"/>
+    
+      <category term="技术" scheme="http://leaosunday.cc/categories/Python/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="python" scheme="http://leaosunday.cc/tags/python/"/>
+    
+      <category term="hash" scheme="http://leaosunday.cc/tags/hash/"/>
+    
+  </entry>
+  
+  <entry>
     <title>有了IP地址，为什么还要用MAC地址？</title>
     <link href="http://leaosunday.cc/2016/12/16/ip-mac/"/>
     <id>http://leaosunday.cc/2016/12/16/ip-mac/</id>
     <published>2016-12-16T03:26:46.000Z</published>
-    <updated>2016-12-16T04:07:53.812Z</updated>
+    <updated>2016-12-16T12:49:16.209Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>最近计算机网络学习的过程中有一个问题搞得不太清楚，就是有了IP地址明明已经可以定位一台主机了为什么还要MAC地址，还特意弄一个ARP协议，感觉有点多此一举。特意上网查了一下，发现了知乎上就有很不错的答案，特意记录一下。</p>
@@ -32,7 +157,7 @@
 <a id="more"></a>
 <h2 id="知乎原问题"><a href="#知乎原问题" class="headerlink" title="知乎原问题"></a>知乎原问题</h2><p><strong>有了 IP 地址，为什么还要用 MAC 地址？</strong></p>
 <p>估计很多人都有这个疑问，但没见哪本书上解释清楚，都只是描述IP是什么，MAC是什么。当数据包到达局域网后，完全可以直接送到对应的IP地址主机，为什么还要询问一下对应IP主机的MAC地址？<br>一个邮递员拿着地址详细到教室的一封信，收件人是小明，教室里没有重名的，邮递员问“小明的学号是多少？”，小明站起来回答“150807”，然后小明坐下，然后邮递员说“学号150807的过来拿信”，小明站起拿信。哎，好像重复了点什么。</p>
-<h2 id="个人认为较为靠谱的回答"><a href="#个人认为较为靠谱的回答" class="headerlink" title="个人认为较为靠谱的回答"></a>个人认为较为靠谱的回答</h2><p>作者：向往美<br>链接：<a href="https://www.zhihu.com/question/21546408/answer/53576595" target="_blank" rel="external">https://www.zhihu.com/question/21546408/answer/53576595</a><br>来源：知乎<br>著作权归作者所有，转载请联系作者获得授权。</p>
+<h2 id="个人认为较为靠谱的回答"><a href="#个人认为较为靠谱的回答" class="headerlink" title="个人认为较为靠谱的回答"></a>个人认为较为靠谱的回答</h2><p>作者：向往美<br>链接：<a href="https://www.zhihu.com/question/21546408/answer/53576595" target="_blank" rel="external">https://www.zhihu.com/question/21546408/answer/53576595</a><br>来源：知乎</p>
 <p>我来说说我的理解吧。<br>举例说明： 我们知道，出于历史的原因，这个世界上出现了很多的国家和民族，他们都使用不同的语言<br>比如，我要和法国人通信，就要学会法语，和日本人通信，就要学会日语，同理，要学会德语、意大利语、西班牙语。。。<br>如果每和一个国家通信，就要学会对方的语言，那可要累死了。<br>所以，最好的办法，就是大家都用1种语言通信。这样只要学会一门外语就可以跟所有的国家通信了。<br>这种“世界通用语言”可以通过2种途径得到：现成的，和新发明的<br>工业革命以后，日不落帝国是世界的中心，其直接继承者美国也是世界的中心，它们都使用英语，于是英语借助其强势地位，成为世界的通用的语言。<br>同时，“世界语”也是一种世界通用语言，与英语不同，世界语是“新发明”的语言（当然也借鉴了其它语言的规则），也就是说，没有哪个民族是”世界语民族“，也不可能发现某个1000前的石碑，上刻世界语。。。<br>因为没有一个国家的母语是世界语，所以在用世界语交流的时候必须要经过一个“翻译”的过程：把本国语言，翻译成世界语。<br>所以我们可以说，世界语是一种“不完备”的语言，它必须依赖于其它的语言才能使用，或者说：运行于其它语言之上。<br>出于历史的原因，“电脑网络”是从无到有、从小到大发展起来的。<br>有很多的网络被发明出来，这些网络各自使用自己的协议（语言），互不兼容（不同的语言相互不能理解），<br>有些网络只应用于小面积，比如一个家庭，一栋楼房，线路长度按米、百米计算。这类网络叫做“局域网”<br>有些网络应用于很大的面积，比如我办理了宽带，这样我和电信公司之间就有一条长达N公里线路，或者电信公司和电信公司之间有长达几十公里的线路。这类网络叫做“广域网”。<br>因特网就是“网络世界语”，各种网络都用1种协议：因特网协议（TCP/IP协议族）交流，所以各种网络都要有个“翻译”的过程：把本网协议，翻译成因特网协议。<br>正如上文所言，世界语是“不完备”的语言，因为大家使用世界语需要一个翻译的过程<br>所以，因特网协议也是不完备的协议，其它网络在运行TCP/IP协议族的时候，也需要一个翻译的过程<br>这就是MAC地址之所以存在的核心要点，下面详述。</p>
 <p>在因特网出现之前就已经有很多的网络出现了，而且因特网并不是第一个全球大网（很明显，历史悠久的有线电话网络就是全球大网）<br>然后，因特网出现了。<br>需要注意的是，因特网在诞生之初，并没有想到自己会成为一个全球性的大网，所以没有针对全球网络的特点进行设计，这就留下了一些短板（比如IP地址不够，协议有漏洞，想想大名鼎鼎的ARP协议漏洞 ）。因特网成功以后，这些漏洞被IPV6弥补</p>
 <p>设计因特网的初衷，是为了应付对苏联的核战争（当时还存在苏联）。<br>你可能听说过“恐怖平衡”这个概念，说的是美苏任何一方如果先发制人的向对方发动核战争，对方的核报复也会让自己身处火海，所以谁也不敢首先使用核武器，从而避免了核大战。<br>但很明显，大家追求的是“优势”而不是“平衡”，这种“平衡”也是不得已而为之，如果我方技术高超，有能力取得核战争的胜利，那就可以把这种可笑的“平衡”扔进太平洋。<br>美国国防部在思考：<br>我往苏联扔一颗核弹，苏联的军事指挥通信系统就垮掉了，没有了指挥，再强大的军队也成了无头苍蝇，没有了战斗力。<br>可苏联往美国扔核弹，美国也会有同样的结局。<br>可是。。。如果我设计一种通信网络结构，这种结构”容灾性“很强、很”健壮“、很”高可用“ ，苏联的1颗核弹灭不了，2颗核弹灭不了，3颗核弹才可以灭。而我1颗核弹就可以灭了它。这样我就有了喘息的余地，我就可能成为核战争的胜利者。<br>因特网就是在这种思考之下诞生了。<br>因特网能抵抗核爆炸？真有这么神奇么？看看图就知道了。<br>先说说传统的电话网拓扑：</p>
