@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://leaosunday.cc/"/>
-  <updated>2016-12-16T12:54:27.193Z</updated>
+  <updated>2016-12-16T12:56:02.246Z</updated>
   <id>http://leaosunday.cc/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>hash-py</title>
+    <title>Hash函数及其重要性(Python)</title>
     <link href="http://leaosunday.cc/2016/12/16/hash-py/"/>
     <id>http://leaosunday.cc/2016/12/16/hash-py/</id>
     <published>2016-12-16T12:45:03.000Z</published>
-    <updated>2016-12-16T12:54:27.193Z</updated>
+    <updated>2016-12-16T12:56:02.246Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>不时会爆出网站的服务器和数据库被盗取，考虑到这点，就要确保用户一些敏感数据（例如密码）的安全性。今天，我们要学的是 hash 背后的基础知识，以及如何用它来保护你的 web 应用的密码。</p>
