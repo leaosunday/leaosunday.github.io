@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://leaosunday.cc/"/>
-  <updated>2016-12-17T06:31:32.339Z</updated>
+  <updated>2016-12-17T08:19:05.847Z</updated>
   <id>http://leaosunday.cc/</id>
   
   <author>
@@ -14,6 +14,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python爬虫-背景调研</title>
+    <link href="http://leaosunday.cc/2016/12/17/scrape-background/"/>
+    <id>http://leaosunday.cc/2016/12/17/scrape-background/</id>
+    <published>2016-12-17T07:03:46.000Z</published>
+    <updated>2016-12-17T08:19:05.847Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>在深入讨论爬取一个网站之前，我们首先需要思考自己爬取的行为是否合法，然后对目标站点的规模和结构进行一定程度的了解。网站自身的<code>robots.txt</code>和<code>Sitemap</code>文件都可以为我们提供一定的帮助，此外还有一些能提供更详细信息的外部工具，比如Google搜索和WHOIS。</p>
+</blockquote>
+<p><strong>友情链接</strong>：。</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/38063442" target="_blank" rel="external">网络爬虫是否存在侵权行为，合法吗?</a></li>
+<li><a href="http://www.robotstxt.org" target="_blank" rel="external">robots协议</a></li>
+<li><a href="http://www.sitemaps.org/protocol.html" target="_blank" rel="external">Sitemap</a></li>
+</ul>
+<a id="more"></a>
+<h2 id="网络爬虫是否合法"><a href="#网络爬虫是否合法" class="headerlink" title="网络爬虫是否合法"></a>网络爬虫是否合法</h2><p>网络爬虫目前还处于早期的蛮荒阶段，”允许哪些行为”这种基本秩序还处于建设之中。从目前的实践来看，如果抓取数据的行为用于个人所用，则不存在问题；如果数据用于转载，那么抓取的数据类型就非常关键了。</p>
+<p>无论如何，当你抓取某个网站的数据时，请记住自己是该网站的访客，应当约束自己的抓取行为，否则他们可能会封禁的你IP，甚至采取更进一步的法律行动。</p>
+<h2 id="检查robots-txt"><a href="#检查robots-txt" class="headerlink" title="检查robots.txt"></a>检查robots.txt</h2><p>大多数网站都会定义<code>robots.txt</code>文件，这样可以让爬虫了解爬取该网站时存在哪些限制。这些限制虽然仅仅作为建议给出，但是良好的网络公民都应该遵守这些限制。在爬取之前，检查<code>robots.txt</code>文件这一宝贵资源可以最小化爬虫被封禁的可能。而且还能发现和网站结构相关的线索。</p>
+<p>一个<code>robots.txt</code>的例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># section 1</span></div><div class="line"><span class="comment"># 禁止用户代理为BadCrawler的爬虫爬取该网站</span></div><div class="line">User-agent: BadCrawler</div><div class="line">Disallow: /</div><div class="line"></div><div class="line"><span class="comment"># section 2</span></div><div class="line"><span class="comment"># 无论使用哪种用户代理，都应该在两次下载请求之间给出5秒抓取延迟</span></div><div class="line"><span class="comment"># 这里还有一个/trap链接，用于封禁哪些爬取了不允许链接的恶意爬虫</span></div><div class="line">User-agent: *</div><div class="line">Crawl-delay: <span class="number">5</span></div><div class="line">Disallow: /trap</div><div class="line"></div><div class="line"><span class="comment"># section 3</span></div><div class="line"><span class="comment"># 定义了一个Sitemap文件</span></div><div class="line">Sitemap: http://example.webscraping.com/sitemap.xml</div></pre></td></tr></table></figure>
+<h2 id="检查网站地图"><a href="#检查网站地图" class="headerlink" title="检查网站地图"></a>检查网站地图</h2><p>网站提供的Sitemap文件(即网站地图)可以帮助爬虫定位网站最新的内容，而无需爬取每一个网页。</p>
+<p>一个<code>sitemap.xml</code>例子：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">urlset</span> <span class="attr">xmlns</span>=<span class="string">"http://www.sitemaps.org/schemas/sitemap/0.9"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;<span class="name">loc</span>&gt;</span>http://example.webscraping.com/view/Afghanistan-1<span class="tag">&lt;/<span class="name">loc</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span></div><div class="line"> 	 <span class="tag">&lt;<span class="name">loc</span>&gt;</span>http://example.webscraping.com/view/Aland-Islands-2<span class="tag">&lt;/<span class="name">loc</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;<span class="name">loc</span>&gt;</span>http://example.webscraping.com/view/Albania-3<span class="tag">&lt;/<span class="name">loc</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;<span class="name">loc</span>&gt;</span>http://example.webscraping.com/view/Algeria-4<span class="tag">&lt;/<span class="name">loc</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">  ...</div><div class="line"><span class="tag">&lt;/<span class="name">urlset</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>网站地图提供了所有网站的链接，虽然Sitemap文件提供了一种爬取网站的有效方式，但是我们仍需对其谨慎处理，因为该文件经常存在缺失、过期或不完整的问题。</p>
+<h2 id="估算网站大小"><a href="#估算网站大小" class="headerlink" title="估算网站大小"></a>估算网站大小</h2><p>目标网站的大小会影响我们如何进行爬取。</p>
+<p>估算一个网站大小的一个简便方法是检查搜索引擎爬虫的结果，因为搜索引擎很可能已经爬取过我们感兴趣的网站。我们可以用site关键词过滤域名结果，从而获取该信息。</p>
+<p>比如Google搜索<code>site:example.webscraping.com/view</code>Google估算该网站拥有117个网页，这和实际情况差不多。不过对于更大型的网站，我们发现Google估算并不十分准确。这种附加的过滤条件非常有用，因为在理想情况下，你只希望爬取网站中包含有用数据的部分，而不是爬取网页的每个页面。</p>
+<h2 id="识别网站所用技术"><a href="#识别网站所用技术" class="headerlink" title="识别网站所用技术"></a>识别网站所用技术</h2><p>构建网站所使用的技术类型也会对我们如何爬取产生影响。有一个十分有用的工具可以检查网站构建的技术类型——builtwith模块。</p>
+<p><strong>安装：</strong><br><code>pip install builtwith</code></p>
+<p>该模块将URL作为参数，下载该URL并对其进行分析，然后返回该网站使用的技术。下面是使用该模块的一个例子:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> builtwith</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>builtwith.parse(<span class="string">'http://example.webscraping.com'</span>)</div><div class="line">&#123;<span class="string">u'javascript-frameworks'</span>: [<span class="string">u'jQuery'</span>, <span class="string">u'Modernizr'</span>, <span class="string">u'jQuery UI'</span>],</div><div class="line"> <span class="string">u'programming-languages'</span>: [<span class="string">u'Python'</span>],</div><div class="line"> <span class="string">u'web-frameworks'</span>: [<span class="string">u'Web2py'</span>, <span class="string">u'Twitter Bootstrap'</span>],</div><div class="line"> <span class="string">u'web-servers'</span>: [<span class="string">u'Nginx'</span>]&#125;</div></pre></td></tr></table></figure></p>
+<p>从上面的返回结果可以看出，示例网站使用了Python的Web2py的框架，另外还使用了一些通用的javascript库，因此该网站的内容很有可能是嵌入在HTML中的，相对而言比较容易抓取。而如果改用AngularJS构建该网站，此时的网站内容就很可能是动态加载的。另外，如果网站使用了ASP.NET，那么在爬取网页时，就必须要用到会话管理和表单提交了。</p>
+<h2 id="寻找网站所有者"><a href="#寻找网站所有者" class="headerlink" title="寻找网站所有者"></a>寻找网站所有者</h2><p>对于一些网站，我们可能会关心其所有者是谁。比如，我们已知网站的所有者会封禁网络爬虫，那么我们最好把下载速度控制得更加保守一些。为了找到网站的所有者，我们可以使用<code>WHOIS</code>协议查询域名的注册者是谁。Python中有一个针对该协议的封装库，其文档地址为<a href="https://pypi.python.org/pypi/python-whois，我们可以通过pip进行安装。" target="_blank" rel="external">https://pypi.python.org/pypi/python-whois，我们可以通过pip进行安装。</a><br><code>pip install python-whois</code></p>
+<p>下面是使用该模块对appspot.com这个域名进行WHOIS查询时的返回结果。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> whois</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> whois.whois(<span class="string">'appspot.com'</span>)</div><div class="line">&#123;</div><div class="line">  ...</div><div class="line">  <span class="string">"name_servers"</span>: [</div><div class="line">    <span class="string">"NS1.GOOGLE.COM"</span>,</div><div class="line">    <span class="string">"NS2.GOOGLE.COM"</span>,</div><div class="line">    <span class="string">"NS3.GOOGLE.COM"</span>,</div><div class="line">    <span class="string">"NS4.GOOGLE.COM"</span>,</div><div class="line">    <span class="string">"ns4.google.com"</span>,</div><div class="line">    <span class="string">"ns2.google.com"</span>,</div><div class="line">    <span class="string">"ns1.google.com"</span>,</div><div class="line">    <span class="string">"ns3.google.com"</span></div><div class="line">  ],</div><div class="line">  <span class="string">"org"</span>: <span class="string">"Google Inc."</span>,</div><div class="line">  <span class="string">"emails"</span>: [</div><div class="line">    <span class="string">"abusecomplaints@markmonitor.com"</span>,</div><div class="line">    <span class="string">"dns-admin@google.com"</span></div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>从结果中可以看出该域名归属于Google，实际上也确实如此。该域名是用于Google App Engine服务的。当我们爬取该域名时就需要十分小心，因为Google经常会阻断网络爬虫，尽管实际上其自身就是一个网络爬虫业务。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;在深入讨论爬取一个网站之前，我们首先需要思考自己爬取的行为是否合法，然后对目标站点的规模和结构进行一定程度的了解。网站自身的&lt;code&gt;robots.txt&lt;/code&gt;和&lt;code&gt;Sitemap&lt;/code&gt;文件都可以为我们提供一定的帮助，此外还有一些能提供更详细信息的外部工具，比如Google搜索和WHOIS。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;友情链接&lt;/strong&gt;：。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.zhihu.com/question/38063442&quot;&gt;网络爬虫是否存在侵权行为，合法吗?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.robotstxt.org&quot;&gt;robots协议&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.sitemaps.org/protocol.html&quot;&gt;Sitemap&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://leaosunday.cc/categories/Python/"/>
+    
+    
+      <category term="Python" scheme="http://leaosunday.cc/tags/Python/"/>
+    
+      <category term="爬虫" scheme="http://leaosunday.cc/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>暗网究竟是什么</title>
@@ -125,7 +186,7 @@
     <link href="http://leaosunday.cc/2016/12/16/hash-py/"/>
     <id>http://leaosunday.cc/2016/12/16/hash-py/</id>
     <published>2016-12-16T12:45:03.000Z</published>
-    <updated>2016-12-16T13:01:49.465Z</updated>
+    <updated>2016-12-17T07:03:45.402Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>不时会爆出网站的服务器和数据库被盗取，考虑到这点，就要确保用户一些敏感数据（例如密码）的安全性。今天，我们要学的是 hash 背后的基础知识，以及如何用它来保护你的 web 应用的密码。</p>
@@ -237,9 +298,9 @@
       <category term="Python" scheme="http://leaosunday.cc/categories/Python/"/>
     
     
-      <category term="python" scheme="http://leaosunday.cc/tags/python/"/>
+      <category term="Python" scheme="http://leaosunday.cc/tags/Python/"/>
     
-      <category term="hash" scheme="http://leaosunday.cc/tags/hash/"/>
+      <category term="Hash" scheme="http://leaosunday.cc/tags/Hash/"/>
     
   </entry>
   
