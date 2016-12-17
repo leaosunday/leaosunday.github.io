@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://leaosunday.cc/"/>
-  <updated>2016-12-17T08:29:46.882Z</updated>
+  <updated>2016-12-17T08:32:59.753Z</updated>
   <id>http://leaosunday.cc/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://leaosunday.cc/2016/12/17/scrape-background/"/>
     <id>http://leaosunday.cc/2016/12/17/scrape-background/</id>
     <published>2016-12-17T07:03:46.000Z</published>
-    <updated>2016-12-17T08:29:46.882Z</updated>
+    <updated>2016-12-17T08:32:59.753Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>在深入讨论爬取一个网站之前，我们首先需要思考自己爬取的行为是否合法，然后对目标站点的规模和结构进行一定程度的了解。网站自身的<code>robots.txt</code>和<code>Sitemap</code>文件都可以为我们提供一定的帮助，此外还有一些能提供更详细信息的外部工具，比如Google搜索和WHOIS。</p>
@@ -71,9 +71,9 @@
       <category term="Python" scheme="http://leaosunday.cc/categories/Python/"/>
     
     
-      <category term="Python" scheme="http://leaosunday.cc/tags/Python/"/>
-    
       <category term="爬虫" scheme="http://leaosunday.cc/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="Python2" scheme="http://leaosunday.cc/tags/Python2/"/>
     
   </entry>
   
@@ -187,7 +187,7 @@
     <link href="http://leaosunday.cc/2016/12/16/hash-py/"/>
     <id>http://leaosunday.cc/2016/12/16/hash-py/</id>
     <published>2016-12-16T12:45:03.000Z</published>
-    <updated>2016-12-17T08:29:14.929Z</updated>
+    <updated>2016-12-17T08:33:10.330Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>不时会爆出网站的服务器和数据库被盗取，考虑到这点，就要确保用户一些敏感数据（例如密码）的安全性。今天，我们要学的是 hash 背后的基础知识，以及如何用它来保护你的 web 应用的密码。</p>
@@ -299,9 +299,9 @@
       <category term="Python" scheme="http://leaosunday.cc/categories/Python/"/>
     
     
-      <category term="Python" scheme="http://leaosunday.cc/tags/Python/"/>
-    
       <category term="Hash" scheme="http://leaosunday.cc/tags/Hash/"/>
+    
+      <category term="Python3" scheme="http://leaosunday.cc/tags/Python3/"/>
     
   </entry>
   

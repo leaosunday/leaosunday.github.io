@@ -4,16 +4,16 @@
 
     
   <url>
-    <loc>http://leaosunday.cc/2016/12/17/scrape-background/</loc>
-    <lastmod>2016-12-17T08:29:46.882Z</lastmod>
+    <loc>http://leaosunday.cc/2016/12/16/hash-py/</loc>
+    <lastmod>2016-12-17T08:33:10.330Z</lastmod>
     <data>
         <display>
-        <title>Python爬虫-背景调研</title>
-        <pubTime>2016-12-17T07:03:46.000Z</pubTime>
+        <title>Hash函数及其重要性(Python)</title>
+        <pubTime>2016-12-16T12:45:03.000Z</pubTime>
         
-        <tag>Python</tag>
+        <tag>Hash</tag>
          
-        <tag>爬虫</tag>
+        <tag>Python3</tag>
          
          
            
@@ -26,16 +26,16 @@
 
     
   <url>
-    <loc>http://leaosunday.cc/2016/12/16/hash-py/</loc>
-    <lastmod>2016-12-17T08:29:14.929Z</lastmod>
+    <loc>http://leaosunday.cc/2016/12/17/scrape-background/</loc>
+    <lastmod>2016-12-17T08:32:59.753Z</lastmod>
     <data>
         <display>
-        <title>Hash函数及其重要性(Python)</title>
-        <pubTime>2016-12-16T12:45:03.000Z</pubTime>
+        <title>Python爬虫-背景调研</title>
+        <pubTime>2016-12-17T07:03:46.000Z</pubTime>
         
-        <tag>Python</tag>
+        <tag>爬虫</tag>
          
-        <tag>Hash</tag>
+        <tag>Python2</tag>
          
          
            
