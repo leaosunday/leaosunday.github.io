@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://leaosunday.cc/"/>
-  <updated>2016-12-17T08:19:05.847Z</updated>
+  <updated>2016-12-17T08:24:01.338Z</updated>
   <id>http://leaosunday.cc/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://leaosunday.cc/2016/12/17/scrape-background/"/>
     <id>http://leaosunday.cc/2016/12/17/scrape-background/</id>
     <published>2016-12-17T07:03:46.000Z</published>
-    <updated>2016-12-17T08:19:05.847Z</updated>
+    <updated>2016-12-17T08:24:01.338Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>在深入讨论爬取一个网站之前，我们首先需要思考自己爬取的行为是否合法，然后对目标站点的规模和结构进行一定程度的了解。网站自身的<code>robots.txt</code>和<code>Sitemap</code>文件都可以为我们提供一定的帮助，此外还有一些能提供更详细信息的外部工具，比如Google搜索和WHOIS。</p>
@@ -51,6 +51,7 @@
 <h2 id="寻找网站所有者"><a href="#寻找网站所有者" class="headerlink" title="寻找网站所有者"></a>寻找网站所有者</h2><p>对于一些网站，我们可能会关心其所有者是谁。比如，我们已知网站的所有者会封禁网络爬虫，那么我们最好把下载速度控制得更加保守一些。为了找到网站的所有者，我们可以使用<code>WHOIS</code>协议查询域名的注册者是谁。Python中有一个针对该协议的封装库，其文档地址为<a href="https://pypi.python.org/pypi/python-whois，我们可以通过pip进行安装。" target="_blank" rel="external">https://pypi.python.org/pypi/python-whois，我们可以通过pip进行安装。</a><br><code>pip install python-whois</code></p>
 <p>下面是使用该模块对appspot.com这个域名进行WHOIS查询时的返回结果。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> whois</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> whois.whois(<span class="string">'appspot.com'</span>)</div><div class="line">&#123;</div><div class="line">  ...</div><div class="line">  <span class="string">"name_servers"</span>: [</div><div class="line">    <span class="string">"NS1.GOOGLE.COM"</span>,</div><div class="line">    <span class="string">"NS2.GOOGLE.COM"</span>,</div><div class="line">    <span class="string">"NS3.GOOGLE.COM"</span>,</div><div class="line">    <span class="string">"NS4.GOOGLE.COM"</span>,</div><div class="line">    <span class="string">"ns4.google.com"</span>,</div><div class="line">    <span class="string">"ns2.google.com"</span>,</div><div class="line">    <span class="string">"ns1.google.com"</span>,</div><div class="line">    <span class="string">"ns3.google.com"</span></div><div class="line">  ],</div><div class="line">  <span class="string">"org"</span>: <span class="string">"Google Inc."</span>,</div><div class="line">  <span class="string">"emails"</span>: [</div><div class="line">    <span class="string">"abusecomplaints@markmonitor.com"</span>,</div><div class="line">    <span class="string">"dns-admin@google.com"</span></div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>从结果中可以看出该域名归属于Google，实际上也确实如此。该域名是用于Google App Engine服务的。当我们爬取该域名时就需要十分小心，因为Google经常会阻断网络爬虫，尽管实际上其自身就是一个网络爬虫业务。</p>
+<p>(用Python写网络爬虫)</p>
 ]]></content>
     
     <summary type="html">
