@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>http://leaosunday.cc/2016/12/19/bs-lxml-re/</loc>
+    <lastmod>2016-12-19T11:10:12.850Z</lastmod>
+    <data>
+        <display>
+        <title>re、BeautifulSoup、lxml解析速度对比</title>
+        <pubTime>2016-12-19T10:49:51.000Z</pubTime>
+        
+        <tag>re</tag>
+         
+        <tag>BeautifulSoup</tag>
+         
+        <tag>lxml</tag>
+         
+        <tag>Python2</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://leaosunday.cc/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://leaosunday.cc/2016/12/19/process-bar/</loc>
     <lastmod>2016-12-19T07:12:07.669Z</lastmod>
     <data>
