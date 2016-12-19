@@ -5,10 +5,10 @@
     
   <url>
     <loc>http://leaosunday.cc/2016/12/19/bs-lxml-re/</loc>
-    <lastmod>2016-12-19T11:10:12.850Z</lastmod>
+    <lastmod>2016-12-19T11:12:04.329Z</lastmod>
     <data>
         <display>
-        <title>re、BeautifulSoup、lxml解析速度对比</title>
+        <title>BeautifulSoup、re、lxml解析速度对比</title>
         <pubTime>2016-12-19T10:49:51.000Z</pubTime>
         
         <tag>re</tag>
