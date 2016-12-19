@@ -11,15 +11,15 @@
         <title>BeautifulSoup、re、lxml解析速度对比</title>
         <pubTime>2016-12-19T10:49:51.000Z</pubTime>
         
-        <tag>re</tag>
-         
         <tag>BeautifulSoup</tag>
+         
+        <tag>re</tag>
          
         <tag>lxml</tag>
          
-        <tag>Python2</tag>
-         
         <tag>爬虫</tag>
+         
+        <tag>Python2</tag>
          
          
            
@@ -83,9 +83,9 @@
         <title>Python爬虫-背景调研</title>
         <pubTime>2016-12-17T07:03:46.000Z</pubTime>
         
-        <tag>Python2</tag>
-         
         <tag>爬虫</tag>
+         
+        <tag>Python2</tag>
          
          
            

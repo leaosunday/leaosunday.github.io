@@ -83,15 +83,15 @@
       <category term="Python" scheme="http://leaosunday.cc/categories/Python/"/>
     
     
-      <category term="re" scheme="http://leaosunday.cc/tags/re/"/>
-    
       <category term="BeautifulSoup" scheme="http://leaosunday.cc/tags/BeautifulSoup/"/>
+    
+      <category term="re" scheme="http://leaosunday.cc/tags/re/"/>
     
       <category term="lxml" scheme="http://leaosunday.cc/tags/lxml/"/>
     
-      <category term="Python2" scheme="http://leaosunday.cc/tags/Python2/"/>
-    
       <category term="爬虫" scheme="http://leaosunday.cc/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="Python2" scheme="http://leaosunday.cc/tags/Python2/"/>
     
   </entry>
   
@@ -203,9 +203,9 @@
       <category term="Python" scheme="http://leaosunday.cc/categories/Python/"/>
     
     
-      <category term="Python2" scheme="http://leaosunday.cc/tags/Python2/"/>
-    
       <category term="爬虫" scheme="http://leaosunday.cc/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="Python2" scheme="http://leaosunday.cc/tags/Python2/"/>
     
   </entry>
   
