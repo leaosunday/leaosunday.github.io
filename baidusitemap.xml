@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://leaosunday.cc/2016/12/19/process-bar/</loc>
+    <lastmod>2016-12-19T07:04:44.675Z</lastmod>
+    <data>
+        <display>
+        <title>Python实现进度条</title>
+        <pubTime>2016-12-19T06:36:59.000Z</pubTime>
+        
+        <tag>Python2</tag>
+         
+        <tag>进度条</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://leaosunday.cc/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://leaosunday.cc/2016/12/16/hash-py/</loc>
     <lastmod>2016-12-17T08:33:10.330Z</lastmod>
     <data>
@@ -11,9 +33,9 @@
         <title>Hash函数及其重要性(Python)</title>
         <pubTime>2016-12-16T12:45:03.000Z</pubTime>
         
-        <tag>Hash</tag>
-         
         <tag>Python3</tag>
+         
+        <tag>Hash</tag>
          
          
            
@@ -33,9 +55,9 @@
         <title>Python爬虫-背景调研</title>
         <pubTime>2016-12-17T07:03:46.000Z</pubTime>
         
-        <tag>爬虫</tag>
-         
         <tag>Python2</tag>
+         
+        <tag>爬虫</tag>
          
          
            

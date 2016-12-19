@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://leaosunday.cc/"/>
-  <updated>2016-12-17T08:32:59.753Z</updated>
+  <updated>2016-12-19T07:04:44.675Z</updated>
   <id>http://leaosunday.cc/</id>
   
   <author>
@@ -14,6 +14,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python实现进度条</title>
+    <link href="http://leaosunday.cc/2016/12/19/process-bar/"/>
+    <id>http://leaosunday.cc/2016/12/19/process-bar/</id>
+    <published>2016-12-19T06:36:59.000Z</published>
+    <updated>2016-12-19T07:04:44.675Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>以前用C实现进度条都是蠢蠢地用光标移动的方式实现，最近看了一篇博客之后了解到了一个叫tqdm的python模块，专门为了在终端显示进度条而存在。不得不再次感叹一声，人生苦短，请用Python！</p>
+</blockquote>
+<p><strong>友情链接：</strong></p>
+<ul>
+<li><a href="https://my.oschina.net/jhao104/blog/681507" target="_blank" rel="external">Python:显示程序运行进度条</a></li>
+<li><a href="http://www.open-open.com/lib/view/open1451794925808.html" target="_blank" rel="external">tqdm - Python的一个快速，可扩展的进度条</a></li>
+</ul>
+<a id="more"></a>
+<h2 id="利用光标移动"><a href="#利用光标移动" class="headerlink" title="利用光标移动"></a>利用光标移动</h2><p><strong>其实进度条的原理十分的简单，无非就是在 <code>shell</code> 中不断重写当前输出。这时就不得不提到文本系统中的控制符。</strong></p>
+<ul>
+<li>\r = CR (Carriage Return) // moves the cursor to the beginning of the line without advancing to the next line（该控制符告诉输出端，将光标移到当前行的首位而不换行）</li>
+<li>\n = LF (Line Feed) // moves the cursor down to the next line without returning to the beginning of the line - <em>In a nix environment \n moves to the beginning of the line.（传统意义上的换行符，将光标移到下一行，但 </em>并不移到首位* ）</li>
+<li>\r\n = CR + LF // a combi of \r and \n （换行并移动光标到行首）</li>
+</ul>
+<p>示例代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">view_bar</span><span class="params">(i, secong=<span class="number">0.1</span>)</span>:</span></div><div class="line">    <span class="keyword">for</span> count <span class="keyword">in</span> range(<span class="number">0</span>, i+<span class="number">1</span>):</div><div class="line">        time.sleep(second)</div><div class="line">        sys.stdout.write(<span class="string">'\rcomplete percent:%0.f%%'</span> % count)</div><div class="line">    	output.flush()</div><div class="line"></div><div class="line">view_bar(<span class="number">100</span>)</div></pre></td></tr></table></figure></p>
+<p>效果如下:<br><img src="http://oi4llr6gh.bkt.clouddn.com/progessbar1.jpg" alt="progressbar1"></p>
+<h2 id="利用tpdm模块"><a href="#利用tpdm模块" class="headerlink" title="利用tpdm模块"></a>利用tpdm模块</h2><p><strong>tqdm是Python的一个快速，可扩展的进度条。</strong></p>
+<p>pypi中的文档：<a href="https://pypi.python.org/pypi/tqdm" target="_blank" rel="external">https://pypi.python.org/pypi/tqdm</a></p>
+<p>示例代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> tqdm <span class="keyword">import</span> tqdm, trange</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> tqdm(range(<span class="number">1</span>, <span class="number">1000</span>)): <span class="comment"># 传入一个迭代器</span></div><div class="line">    time.sleep(<span class="number">0.01</span>)</div><div class="line"></div><div class="line"><span class="comment"># for i in trange(1000): # trange(1000)相当于tqdm(range(1000))</span></div><div class="line"><span class="comment">#     time.sleep(0.01)</span></div></pre></td></tr></table></figure></p>
+<p>效果如下：<br><img src="http://oi4llr6gh.bkt.clouddn.com/progessbar2.jpg" alt="progressbar2"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;以前用C实现进度条都是蠢蠢地用光标移动的方式实现，最近看了一篇博客之后了解到了一个叫tqdm的python模块，专门为了在终端显示进度条而存在。不得不再次感叹一声，人生苦短，请用Python！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;友情链接：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://my.oschina.net/jhao104/blog/681507&quot;&gt;Python:显示程序运行进度条&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.open-open.com/lib/view/open1451794925808.html&quot;&gt;tqdm - Python的一个快速，可扩展的进度条&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://leaosunday.cc/categories/Python/"/>
+    
+    
+      <category term="Python2" scheme="http://leaosunday.cc/tags/Python2/"/>
+    
+      <category term="进度条" scheme="http://leaosunday.cc/tags/%E8%BF%9B%E5%BA%A6%E6%9D%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>Python爬虫-背景调研</title>
@@ -71,9 +123,9 @@
       <category term="Python" scheme="http://leaosunday.cc/categories/Python/"/>
     
     
-      <category term="爬虫" scheme="http://leaosunday.cc/tags/%E7%88%AC%E8%99%AB/"/>
-    
       <category term="Python2" scheme="http://leaosunday.cc/tags/Python2/"/>
+    
+      <category term="爬虫" scheme="http://leaosunday.cc/tags/%E7%88%AC%E8%99%AB/"/>
     
   </entry>
   
@@ -299,9 +351,9 @@
       <category term="Python" scheme="http://leaosunday.cc/categories/Python/"/>
     
     
-      <category term="Hash" scheme="http://leaosunday.cc/tags/Hash/"/>
-    
       <category term="Python3" scheme="http://leaosunday.cc/tags/Python3/"/>
+    
+      <category term="Hash" scheme="http://leaosunday.cc/tags/Hash/"/>
     
   </entry>
   
