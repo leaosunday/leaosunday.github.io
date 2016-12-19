@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://leaosunday.cc/"/>
-  <updated>2016-12-19T11:16:50.919Z</updated>
+  <updated>2016-12-19T11:27:35.992Z</updated>
   <id>http://leaosunday.cc/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://leaosunday.cc/2016/12/19/bs-lxml-re/"/>
     <id>http://leaosunday.cc/2016/12/19/bs-lxml-re/</id>
     <published>2016-12-19T10:49:51.000Z</published>
-    <updated>2016-12-19T11:16:50.919Z</updated>
+    <updated>2016-12-19T11:27:35.992Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>用Python写爬虫的小伙伴们肯定对BS、re、lxml模块运用地炉火纯青了，可能也听说过这三种html parser的速度对比，但是没有亲自计算过时间。今天作为大自然的搬运工，就为大家做了一次小实验，顺便记录一下。</p>
