@@ -1,0 +1,1284 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python2,编码," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LuckyBamboo的蔡园" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="一旦走上了编程之路，如果你不把编码问题搞清楚，那么它将像幽灵一般纠缠你整个职业生涯，各种灵异事件会接踵而来，挥之不去。只有充分发挥程序员死磕到底的精神你才有可能彻底摆脱编码问题带来的烦恼。
+
+友情链接:
+
+PYTHON编码的前世今生">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python编码为什么那么蛋疼">
+<meta property="og:url" content="http://leaosunday.cc/2016/12/26/python-coding/index.html">
+<meta property="og:site_name" content="LuckyBamboo的蔡园">
+<meta property="og:description" content="一旦走上了编程之路，如果你不把编码问题搞清楚，那么它将像幽灵一般纠缠你整个职业生涯，各种灵异事件会接踵而来，挥之不去。只有充分发挥程序员死磕到底的精神你才有可能彻底摆脱编码问题带来的烦恼。
+
+友情链接:
+
+PYTHON编码的前世今生">
+<meta property="og:image" content="http://oi4llr6gh.bkt.clouddn.com/ascii.jpg">
+<meta property="og:image" content="http://www.webopedia.com/FIG/EXT-ASC.gif">
+<meta property="og:image" content="http://oi4llr6gh.bkt.clouddn.com/ISO-8859-1.gif">
+<meta property="og:image" content="http://oi4llr6gh.bkt.clouddn.com/cd6c79db0291464c193de1b532ae890c_b.jpg">
+<meta property="og:image" content="http://oi4llr6gh.bkt.clouddn.com/encode.jpg">
+<meta property="og:image" content="http://oi4llr6gh.bkt.clouddn.com/python-encode.jpg">
+<meta property="og:image" content="http://oi4llr6gh.bkt.clouddn.com/encode-decode.jpg">
+<meta property="og:updated_time" content="2016-12-26T13:20:04.713Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python编码为什么那么蛋疼">
+<meta name="twitter:description" content="一旦走上了编程之路，如果你不把编码问题搞清楚，那么它将像幽灵一般纠缠你整个职业生涯，各种灵异事件会接踵而来，挥之不去。只有充分发挥程序员死磕到底的精神你才有可能彻底摆脱编码问题带来的烦恼。
+
+友情链接:
+
+PYTHON编码的前世今生">
+<meta name="twitter:image" content="http://oi4llr6gh.bkt.clouddn.com/ascii.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6363571018371433000',
+      author: 'luckybamboo'
+    },
+    algolia: {
+      applicationID: 'UK4YW8A7OO',
+      apiKey: 'daf1e5aca80df9af5f150557432cc84a',
+      indexName: 'search_index',
+      hits: {"per_page":5},
+      labels: {"input_placeholder":"输入关键字","hits_empty":"没有找到[${query}]的相关内容","hits_stats":"${hits}条相关记录, 耗时: ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://leaosunday.cc/2016/12/26/python-coding/"/>
+
+
+
+
+
+  <title> Python编码为什么那么蛋疼 | LuckyBamboo的蔡园 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7f53ca5913f16b6cf0ec5734ba653ad0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">LuckyBamboo的蔡园</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">记录 分享</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://leaosunday.cc/2016/12/26/python-coding/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="LuckyBamboo">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://oi4llr6gh.bkt.clouddn.com/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="LuckyBamboo的蔡园">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="LuckyBamboo的蔡园" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python编码为什么那么蛋疼
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-26T20:08:39+08:00">
+                2016-12-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/26/python-coding/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/26/python-coding/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/26/python-coding/" class="leancloud_visitors" data-flag-title="Python编码为什么那么蛋疼">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">热度
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>°C
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>一旦走上了编程之路，如果你不把编码问题搞清楚，那么它将像幽灵一般纠缠你整个职业生涯，各种灵异事件会接踵而来，挥之不去。只有充分发挥程序员死磕到底的精神你才有可能彻底摆脱编码问题带来的烦恼。</p>
+</blockquote>
+<p><strong>友情链接</strong>:</p>
+<ul>
+<li><a href="http://foofish.net/python-character-encode.html" target="_blank" rel="external">PYTHON编码的前世今生</a></li>
+</ul>
+<a id="more"></a>
+<p>作者：zhijun liu<br>链接：<a href="http://foofish.net/python-character-encode.html" target="_blank" rel="external">http://foofish.net/python-character-encode.html</a><br>来源：博客</p>
+<p>这是我在知乎上回答的一个问题：<a href="https://www.zhihu.com/question/31833164" target="_blank" rel="external">Python 编码为什么那么蛋疼？</a>，期间收到了不少赞，不过发现我的回答还存在一些误导，于是通过查找资料重新整理了一篇，希望能解答你对编码的困惑。</p>
+<p>一旦走上了编程之路，如果你不把编码问题搞清楚，那么它将像幽灵一般纠缠你整个职业生涯，各种灵异事件会接踵而来，挥之不去。只有充分发挥程序员死磕到底的精神你才有可能彻底摆脱编码问题带来的烦恼，我第一次遇到编码问题是写 JavaWeb 相关的项目，一串字符从浏览器游离到应用程序代码中，翻江倒海沉浸到数据库中，随时随地都有可能踩到编码的地雷。第二次遇到编码问题就是学 Python 的时候，在爬取网页数据时，编码问题又出现了，当时我的心情是奔溃的，用时下最ing的一句话就是：“我当时就懵逼了”。为了搞清字符编码，我们得从计算机的起源开始，计算机中的所有数据，不论是文字、图片、视频、还是音频文件，本质上最终都是按照类似 01010101 的数字形式存储的。我们是幸运的，我们也是不幸的，幸运的是时代赋予了我们都有机会接触计算机，不幸的是，计算机不是我们国人发明的，所以计算机的标准得按美帝国人的习惯来设计，那么最开始计算机是通过什么样的方式来表现字符的呢？这要从计算机编码的发展史说起。</p>
+<h3 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a>ASCII</h3><p>每个做 JavaWeb 开发的新手都会遇到乱码问题，每个做 Python 爬虫的新手都会遇到编码问题，为什么编码问题那么蛋疼呢？这个问题要从1992年 Guido van Rossum 创造 Python 这门语言说起，那时的 Guido 绝对没想到的是 Python 这门语言在今天会如此受大家欢迎，也不会想到计算机发展速度会如此惊人，尽管 Guido 在当初设计这门语言时是不需要关心编码的，因为在英语世界里，字符的个数非常有限，26个字母（大小写）、10个数字、标点符号、控制符，也就是键盘上所有的键所对应的字符加起来也不过是一百多个字符而已，这在计算机中用一个字节的存储空间来表示一个字符是绰绰有余的，因为一个字节相当于8个比特位，8个比特位可以表示256个符号。于是聪明的美国人就制定了一套字符编码的标准叫ASCII(American Standard Code for Information Interchange)，每个字符都对应唯一的一个数字，比如字符<code>A</code>对应的二进制数值是<code>01000001</code>，对应的十进制就是65。最开始ASCII只定义了128个字符编码，包括96个文字和32个控制符号，一共128个字符只需要一个字节的7位就能表示所有的字符，因此 ASCII 只使用了一个字节的后7位，最高位都为0。每个字符与ASCII码的对应关系可查看网站<a href="http://www.ascii-code.com/" target="_blank" rel="external">ascii-code</a>。<img src="http://oi4llr6gh.bkt.clouddn.com/ascii.jpg" alt="ascii"></p>
+<h3 id="EASCII-ISO-8859-1"><a href="#EASCII-ISO-8859-1" class="headerlink" title="EASCII(ISO/8859-1)"></a>EASCII(ISO/8859-1)</h3><p>然而计算机慢慢地普及到其他西欧地区时，他们发现还有很多西欧所特有的字符是 ASCII 编码表中没有的，于是后来出现了可扩展的 ASCII 叫 EASCII ，顾名思义，它是在ASCII的基础上扩展而来，把原来的7位扩充到8位，它完全兼容ASCII，扩展出来的符号包括表格符号、计算符号、希腊字母和特殊的拉丁符号。然而 EASCII 时代是一个混乱的时代，大家没有统一标准，他们各自把最高位按照自己的标准实现了自己的一套字符编码标准，比较著名的就有 <strong>CP437</strong>， CP437 是 Windows 系统中使用的字符编码，如下图：<br><img src="http://www.webopedia.com/FIG/EXT-ASC.gif" alt="cp437"></p>
+<p>另外一种被广泛使用的 EASCII 还有 <strong>ISO/8859-1(Latin-1)</strong>，它是国际标准化组织（ISO）及国际电工委员会（IEC）联合制定的一系列8位元字符集的标准，ISO/8859-1 只继承了 CP437 字符编码的128-159之间的字符，所以它是从160开始定义的，不幸的是这些众多的 ASCII 扩充字集之间互不兼容。<img src="http://oi4llr6gh.bkt.clouddn.com/ISO-8859-1.gif" alt="iso8859-1"></p>
+<h3 id="GBK"><a href="#GBK" class="headerlink" title="GBK"></a>GBK</h3><p>随着时代的进步，计算机开始普及到千家万户，比尔盖茨让每个人桌面都有一台电脑的梦想得以实现。但是计算机进入中国不得不面临的一个问题就是字符编码，虽然咱们国家的汉字是人类使用频率最多的文字，汉字博大精深，常见的汉字就有成千上万，这已经大大超出了 ASCII 编码所能表示的字符范围了，即使是 EASCII 也显得杯水车薪，于是聪明的中国人自己弄了一套编码叫 <strong>GB2312</strong>，又称GB0，1981由中国国家标准总局发布。GB2312 编码共收录了6763个汉字，同时他还兼容 ASCII，GB 2312的出现，基本满足了汉字的计算机处理需要，它所收录的汉字已经覆盖中国大陆99.75%的使用频率，不过 GB2312 还是不能100%满足中国汉字的需求，对一些罕见的字和繁体字 GB2312 没法处理，后来就在GB2312的基础上创建了一种叫 GBK 的编码，GBK 不仅收录了27484个汉字，同时还收录了藏文、蒙文、维吾尔文等主要的少数民族文字。同样 GBK 也是兼容 ASCII 编码的，对于英文字符用1个字节来表示，汉字用两个字节来标识。</p>
+<h3 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h3><p>对于如何处理中国人自己的文字我们可以另立山头，按照我们自己的需求制定一套编码规范，但是计算机不止是美国人和中国人用啊，还有欧洲、亚洲其他国家的文字诸如日文、韩文全世界各地的文字加起来估计也有好几十万，这已经大大超出了ASCII码甚至GBK所能表示的范围了，况且人家为什么用采用你GBK标准呢？如此庞大的字符库究竟用什么方式来表示好呢？于是统一联盟国际组织提出了Unicode编码，Unicode的学名是”Universal Multiple-Octet Coded Character Set”，简称为UCS。Unicode有两种格式：UCS-2和UCS-4。UCS-2就是用两个字节编码，一共16个比特位，这样理论上最多可以表示65536个字符，不过要表示全世界所有的字符显示65536个数字还远远不过，因为光汉字就有近10万个，因此Unicode4.0规范定义了一组附加的字符编码，UCS-4就是用4个字节（实际上只用了31位，最高位必须为0）。理论上完全可以涵盖一切语言所用的符号。世界上任何一个字符都可以用一个Unicode编码来表示，一旦字符的Unicode编码确定下来后，就不会再改变了。但是Unicode有一定的局限性，一个Unicode字符在网络上传输或者最终存储起来的时候，并不见得每个字符都需要两个字节，比如一字符“A“，用一个字节就可以表示的字符，偏偏还要用两个字节，显然太浪费空间了。第二问题是，一个Unicode字符保存到计算机里面时就是一串01数字，那么计算机怎么知道一个2字节的Unicode字符是表示一个2字节的字符呢，还是表示两个1字节的字符呢，如果你不事先告诉计算机，那么计算机也会懵逼了。Unicode只是规定如何编码，并没有规定如何传输、保存这个编码。例如“汉”字的Unicode编码是6C49，我可以用4个ascii数字来传输、保存这个编码；也可以用utf-8编码的3个连续的字节E6 B1 89来表示它。关键在于通信双方都要认可。因此Unicode编码有不同的实现方式，比如：UTF-8、UTF-16等等。这里的Unicode就像英语一样，做为国与国之间交流世界通用的标准，每个国家有自己的语言，他们把标准的英文文档翻译成自己国家的文字，这是实现方式，就像utf-8。</p>
+<h3 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h3><p>UTF-8（Unicode Transformation Format）作为Unicode的一种实现方式，广泛应用于互联网，它是一种变长的字符编码，可以根据具体情况用1-4个字节来表示一个字符。比如英文字符这些原本就可以用ASCII码表示的字符用UTF-8表示时就只需要一个字节的空间，和ASCII是一样的。对于多字节（n个字节）的字符，第一个字节的前n为都设为1，第n+1位设为0，后面字节的前两位都设为10。剩下的二进制位全部用该字符的unicode码填充。</p>
+<p><img src="http://oi4llr6gh.bkt.clouddn.com/cd6c79db0291464c193de1b532ae890c_b.jpg" alt="code"></p>
+<p>以汉字“好”为例，“好”对应的Unicode是597D，对应的区间是0000 0800–0000 FFFF，因此它用UTF-8表示时需要用3个字节来存储，597D用二进制表示是： 0101100101111101，填充到1110xxxx 10xxxxxx 10xxxxxx得到11100101 10100101 10111101，转换成16进制：e5a5bd，因此“好”的Unicode”597D”对应的UTF-8编码是”E5A5BD”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">中文        好</div><div class="line">unicode         0101   100101   111101</div><div class="line">编码规则     1110xxxx 10xxxxxx 10xxxxxx</div><div class="line">            --------------------------</div><div class="line">utf-8       11100101 10100101 10111101</div><div class="line">            --------------------------</div><div class="line">16进制utf-8     e   5    a   5    b   d</div></pre></td></tr></table></figure>
+<h3 id="PYTHON字符编码"><a href="#PYTHON字符编码" class="headerlink" title="PYTHON字符编码"></a>PYTHON字符编码</h3><p>现在总算把理论说完了。再来说说Python中的编码问题。Python的诞生时间比Unicode要早很多，Python的默认编码是ASCII</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> sys</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>sys.getdefaultencoding()</div><div class="line"><span class="string">'ascii'</span></div></pre></td></tr></table></figure>
+<p>所以在Python源代码文件中如果不显示地指定编码的话，将出现语法错误</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#test.py</span></div><div class="line"><span class="keyword">print</span> <span class="string">"你好"</span></div></pre></td></tr></table></figure>
+<p>上面是test.py脚本，运行 python test.py 就会包如下错误：</p>
+<blockquote>
+<p><em>File “test.py”, line 1 yntaxError: Non-ASCII character ‘\xe4′ in file test.py on line 1, but no encoding declared; see <a href="http://www.python.org/" target="_blank" rel="external">http://www.python.org/</a> ps/pep-0263.html for details</em></p>
+</blockquote>
+<p>为了在源代码中支持非ASCII字符，必须在源文件的第一行或者第二行显示地指定编码格式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div></pre></td></tr></table></figure>
+<p>或者是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python#</span></div><div class="line">-*- coding: utf<span class="number">-8</span> -*-</div></pre></td></tr></table></figure>
+<p>在python中和字符串相关的数据类型,分别是<strong>str</strong>、<strong>unicode</strong>两种，他们都是basestring的子类，可见str与unicode是两种不同类型的字符串对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> basestring</div><div class="line">   /  \ </div><div class="line">  /    \</div><div class="line">str    unicode</div></pre></td></tr></table></figure>
+<p>对于同一个汉字“好”，用str表示时，它对应的就是utf-8编码的’\xe5\xa5\xbd’，而用unicode表示时，他对应的符号就是u’\u597d’，与<code>u&quot;好&quot;</code>是等同的。需要补充一点的是，str类型的字符其具体的编码格式是UTF-8还是GBK，还是其他格式，根据操作系统相关。比如在Windows系统中，cmd命令行中显示的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># windows终端</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">'好'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(a)</div><div class="line">&lt;type <span class="string">'str'</span>&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a</div><div class="line"><span class="string">'\xba\xc3'</span></div></pre></td></tr></table></figure>
+<p>而在Linux系统的命令行中显示的是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># linux终端</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a=<span class="string">'好'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(a)</div><div class="line">&lt;type <span class="string">'str'</span>&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a</div><div class="line"><span class="string">'\xe5\xa5\xbd'</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b=<span class="string">u'好'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(b)</div><div class="line">&lt;type <span class="string">'unicode'</span>&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b</div><div class="line"><span class="string">u'\u597d'</span></div></pre></td></tr></table></figure>
+<p>不论是Python3x、Java还是其他编程语言，Unicode编码都成为语言的默认编码格式，而数据最后保存到介质中的时候，不同的介质可有用不同的方式，有些人喜欢用UTF-8，有些人喜欢用GBK，这都无所谓，只要平台统一的编码规范，具体怎么实现并不关心。</p>
+<p><img src="http://oi4llr6gh.bkt.clouddn.com/encode.jpg" alt="encode"></p>
+<h3 id="str与unicode的转换"><a href="#str与unicode的转换" class="headerlink" title="str与unicode的转换"></a>str与unicode的转换</h3><p>那么在Python中str和unicode之间是如何转换的呢？这两种类型的字符串类型之间的转换就是靠这两个方法<code>decode</code>和<code>encode</code>。</p>
+<p><img src="http://oi4llr6gh.bkt.clouddn.com/python-encode.jpg" alt="py-encode"></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">#从str类型转换到unicode</div><div class="line">s.decode(encoding)   =====&gt;  &lt;type 'str'&gt; to &lt;type 'unicode'&gt;</div><div class="line">#从unicode转换到str</div><div class="line">u.encode(encoding)   =====&gt;  &lt;type 'unicode'&gt; to &lt;type 'str'&gt;</div><div class="line"></div><div class="line">&gt;&gt;&gt; c = b.encode('utf-8')</div><div class="line">&gt;&gt;&gt; type(c)</div><div class="line">&lt;type 'str'&gt;</div><div class="line">&gt;&gt;&gt; c</div><div class="line">'\xe5\xa5\xbd'</div><div class="line"></div><div class="line">&gt;&gt;&gt; d = c.decode('utf-8')</div><div class="line">&gt;&gt;&gt; type(d)</div><div class="line">&lt;type 'unicode'&gt;</div><div class="line">&gt;&gt;&gt; d</div><div class="line">u'\u597d'</div></pre></td></tr></table></figure>
+<p>这个’\xe5\xa5\xbd’就是unicode u’好’通过函数encode编码得到的UTF-8编码的str类型的字符串。反之亦然，str类型的c通过函数decode解码成unicode字符串d。</p>
+<h3 id="str-s-与unicode-s"><a href="#str-s-与unicode-s" class="headerlink" title="str(s)与unicode(s)"></a>str(s)与unicode(s)</h3><p>str(s)和unicode(s)是两个工厂方法，分别返回str字符串对象和unicode字符串对象，str(s)是s.encode(‘ascii’)的简写。实验：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s3 = <span class="string">u"你好"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s3</div><div class="line"><span class="string">u'\u4f60\u597d'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>str(s3)</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">UnicodeEncodeError: <span class="string">'ascii'</span> codec can<span class="string">'t encode characters in position 0-1: ordinal not in range(128)</span></div></pre></td></tr></table></figure>
+<p>上面s3是unicode类型的字符串，str(s3)相当于是执行s3.encode(‘ascii’)因为“你好”两个汉字不能用ascii码来表示，所以就报错了，指定正确的编码：s3.encode(‘gbk’)或者s3.encode(“utf-8”)就不会出现这个问题了。类似的unicode有同样的错误：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; s4 = "你好"</div><div class="line">&gt;&gt;&gt; unicode(s4)</div><div class="line">Traceback (most recent call last):</div><div class="line">  File "&lt;stdin&gt;", line 1, in &lt;module&gt;</div><div class="line">UnicodeDecodeError: 'ascii' codec can't decode byte 0xc4 in position 0: ordinal not in range(128)</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<p>unicode(s4)等效于s4.decode(‘ascii’)，因此要正确的转换就要正确指定其编码s4.decode(‘gbk’)或者s4.decode(“utf-8”)。</p>
+<h3 id="乱码"><a href="#乱码" class="headerlink" title="乱码"></a>乱码</h3><p>所有出现乱码的原因都可以归结为字符经过不同编码解码在编码的过程中使用的编码格式不一致，比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># encoding: utf-8</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a=<span class="string">'好'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a</div><div class="line"><span class="string">'\xe5\xa5\xbd'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b=a.decode(<span class="string">"utf-8"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b</div><div class="line"><span class="string">u'\u597d'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>c=b.encode(<span class="string">"gbk"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>c</div><div class="line"><span class="string">'\xba\xc3'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> c</div><div class="line">��</div></pre></td></tr></table></figure>
+<p>utf-8编码的字符‘好’占用3个字节，解码成Unicode后，如果再用gbk来解码后，只有2个字节的长度了，最后出现了乱码的问题，因此防止乱码的最好方式就是始终坚持使用同一种编码格式对字符进行编码和解码操作。</p>
+<p><img src="http://oi4llr6gh.bkt.clouddn.com/encode-decode.jpg" alt="decode-encode"></p>
+<h3 id="其他技巧"><a href="#其他技巧" class="headerlink" title="其他技巧"></a>其他技巧</h3><p>对于如unicode形式的字符串（str类型)：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">'id\u003d215903184\u0026index\u003d0\u0026st\u003d52\u0026sid’</span></div></pre></td></tr></table></figure>
+<p>转换成真正的unicode需要使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.decode(&apos;unicode-escape&apos;)</div></pre></td></tr></table></figure>
+<p>测试：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">'id\u003d215903184\u0026index\u003d0\u0026st\u003d52\u0026sid\u003d95000\u0026i'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(type(s))</div><div class="line">&lt;type <span class="string">'str'</span>&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = s.decode(<span class="string">'unicode-escape'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line"><span class="string">u'id=215903184&amp;index=0&amp;st=52&amp;sid=95000&amp;i'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(type(s))</div><div class="line">&lt;type <span class="string">'unicode'</span>&gt;</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<p>以上代码和概念都是基于Python2.x。</p>
+<p>参考：</p>
+<ul>
+<li><a href="https://www.python.org/dev/peps/pep-0263/" target="_blank" rel="external">https://www.python.org/dev/peps/pep-0263/</a></li>
+<li><a href="http://www.liaoxuefengcom/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386819196283586a37629844456ca7e5a7faa9b94ee8000" target="_blank" rel="external">http://www.liaoxuefengcom/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386819196283586a37629844456ca7e5a7faa9b94ee8000</a></li>
+<li><p><a href="http://www.fmddlmyy.cn/text6.html" target="_blank" rel="external">http://www.fmddlmyy.cn/text6.html</a></p>
+<p>​</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/2dhorse.png" alt="LuckyBamboo wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫上面的二维码图案，加我微信</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>请随意留下两块五！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://oi4llr6gh.bkt.clouddn.com/wechat_reward.png" alt="LuckyBamboo WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://oi4llr6gh.bkt.clouddn.com/alipay_reward.jpg" alt="LuckyBamboo Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python2/" rel="tag"># Python2</a>
+          
+            <a href="/tags/编码/" rel="tag"># 编码</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/19/bs-lxml-re/" rel="next" title="BeautifulSoup、re、lxml解析速度对比">
+                <i class="fa fa-chevron-left"></i> BeautifulSoup、re、lxml解析速度对比
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/12/26/python-coding/"
+     data-title="Python编码为什么那么蛋疼"
+     data-content=""
+     data-url="http://leaosunday.cc/2016/12/26/python-coding/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/26/python-coding/"
+           data-title="Python编码为什么那么蛋疼" data-url="http://leaosunday.cc/2016/12/26/python-coding/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oi4llr6gh.bkt.clouddn.com/avatar.jpg"
+               alt="LuckyBamboo" />
+          <p class="site-author-name" itemprop="name">LuckyBamboo</p>
+          <p class="site-description motion-element" itemprop="description">Life is short, use Python.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            <a href='javascript:(
+   function go() {
+   var songs = [
+               "http://ofyfogrgx.bkt.clouddn.com/tongxingSibel%20-%20Im%20Sorry.mp3",
+               "http://ofyfogrgx.bkt.clouddn.com/Music-sunburst.mp3",
+               "http://ofyfogrgx.bkt.clouddn.com/blog/20161115/150103346.mp3",
+               "http://ofyfogrgx.bkt.clouddn.com/blog/20161115/150842689.mp3",
+               "http://ofyfogrgx.bkt.clouddn.com//blog/Apple%20&%20Stone%20-%20Lost.mp3"
+   ];
+   
+   function c() {
+       var e = document.createElement("link");
+       e.setAttribute("type", "text/css");
+       e.setAttribute("rel", "stylesheet");
+       e.setAttribute("href", f);
+       e.setAttribute("class", l);
+       document.body.appendChild(e)
+   }
+   function h() {
+       var e = document.getElementsByClassName(l);
+       for (var t = 0; t < e.length; t++) {
+           document.body.removeChild(e[t])
+       }
+   }
+   function p() {
+       var e = document.createElement("div");
+       e.setAttribute("class", a);
+       document.body.appendChild(e);
+       setTimeout(function() {
+           document.body.removeChild(e)
+       }, 100)
+   }
+   function d(e) {
+       return {
+           height : e.offsetHeight,
+           width : e.offsetWidth
+       }
+   }
+   function v(i) {
+       var s = d(i);
+       return s.height > e && s.height < n && s.width > t && s.width < r
+   }
+   function m(e) {
+       var t = e;
+       var n = 0;
+       while (!!t) {
+           n += t.offsetTop;
+           t = t.offsetParent
+       }
+       return n
+   }
+   function g() {
+       var e = document.documentElement;
+       if (!!window.innerWidth) {
+           return window.innerHeight
+       } else if (e && !isNaN(e.clientHeight)) {
+           return e.clientHeight
+       }
+       return 0
+   }
+   function y() {
+       if (window.pageYOffset) {
+           return window.pageYOffset
+       }
+       return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+   }
+   function E(e) {
+       var t = m(e);
+       return t >= w && t <= b + w
+   }
+   function S() {
+       var e = document.getElementById("audio_element_id");
+       if(e != null){
+           var index = parseInt(e.getAttribute("curSongIndex"));
+           if(index > songs.length - 2) {
+               index = 0;
+           } else {
+               index++;
+           }
+           e.setAttribute("curSongIndex", index);
+           N();
+       }
+       e.src = i;
+       e.play()
+   }
+   function x(e) {
+       e.className += " " + s + " " + o
+   }
+   function T(e) {
+       e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+   }
+   function N() {
+       var e = document.getElementsByClassName(s);
+       var t = new RegExp("\\b" + s + "\\b");
+       for (var n = 0; n < e.length; ) {
+           e[n].className = e[n].className.replace(t, "")
+       }
+   }
+   function initAudioEle() {
+       var e = document.getElementById("audio_element_id");
+       if(e === null){
+           e = document.createElement("audio");
+           e.setAttribute("class", l);
+           e.setAttribute("curSongIndex", 0);
+           e.id = "audio_element_id";
+           e.loop = false;
+           e.bgcolor = 0;
+           e.addEventListener("canplay", function() {
+           setTimeout(function() {
+               x(k)
+           }, 500);
+           setTimeout(function() {
+               N();
+               p();
+               for (var e = 0; e < O.length; e++) {
+                   T(O[e])
+               }
+           }, 15500)
+       }, true);
+       e.addEventListener("ended", function() {
+           N();
+           h();
+           go();
+       }, true);
+       e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+       document.body.appendChild(e);
+       }
+   }
+   
+   initAudioEle();
+   var e = 30;
+   var t = 30;
+   var n = 350;
+   var r = 350;
+   var curSongIndex = parseInt(document.getElementById("audio_element_id").getAttribute("curSongIndex"));
+   var i = songs[curSongIndex];
+   
+   var s = "mw-harlem_shake_me";
+   var o = "im_first";
+   var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+   var a = "mw-strobe_light";
+   /* harlem-shake-style.css，替换成你的位置，也可以直接使用：//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css */
+   var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+   
+   var l = "mw_added_css";
+   var b = g();
+   var w = y();
+   var C = document.getElementsByTagName("*");
+   var k = null;
+   for (var L = 0; L < C.length; L++) {
+       var A = C[L];
+       if (v(A)) {
+           if (E(A)) {
+               k = A;
+               break
+           }
+       }
+   }
+   if (A === null) {
+       console.warn("Could not find a node of the right size. Please try a different page.");
+       return
+   }
+   c();
+   S();
+   var O = [];
+   for (var L = 0; L < C.length; L++) {
+       var A = C[L];
+       if (v(A)) {
+           O.push(A)
+       }
+   }
+   })()'><i class="menu-item-icon fa fa-music fa-fw"></i>High</a>
+</div>
+         <!-- end High一下 -->
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/leaosunday" target="_blank" title="GitHub">
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/profile.php?id=100012262142159" target="_blank" title="Facebook">
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/1799107465/profile" target="_blank" title="微博">
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/li-hao-jie-88-39/activities" target="_blank" title="知乎">
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-heartbeat"></i>
+              Loves
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.zhibo8.cc/" title="直播吧" target="_blank">直播吧</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://sports.sina.com.cn/" title="新浪体育" target="_blank">新浪体育</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ASCII"><span class="nav-number">1.</span> <span class="nav-text">ASCII</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EASCII-ISO-8859-1"><span class="nav-number">2.</span> <span class="nav-text">EASCII(ISO/8859-1)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GBK"><span class="nav-number">3.</span> <span class="nav-text">GBK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unicode"><span class="nav-number">4.</span> <span class="nav-text">Unicode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UTF-8"><span class="nav-number">5.</span> <span class="nav-text">UTF-8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PYTHON字符编码"><span class="nav-number">6.</span> <span class="nav-text">PYTHON字符编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#str与unicode的转换"><span class="nav-number">7.</span> <span class="nav-text">str与unicode的转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#str-s-与unicode-s"><span class="nav-number">8.</span> <span class="nav-text">str(s)与unicode(s)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乱码"><span class="nav-number">9.</span> <span class="nav-text">乱码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他技巧"><span class="nav-number">10.</span> <span class="nav-text">其他技巧</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LuckyBamboo</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://leaosunday.cc">LuckyBamboo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  <!--主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces-->
+  Made by -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">你是第<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>个小伙伴</span>
+  
+
+  
+    <span class="site-pv">本站总浏览<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luckybamboo"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementById('footer')
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("VqjXp5vHNgJMMnYgptP65KWa-gzGzoHsz", "7t9sMQ5kCfOs64dM4zOuXz7h");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+</body>
+</html>

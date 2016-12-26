@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://leaosunday.cc/2016/12/26/python-coding/</loc>
+    <lastmod>2016-12-26T13:20:04.713Z</lastmod>
+    <data>
+        <display>
+        <title>Python编码为什么那么蛋疼</title>
+        <pubTime>2016-12-26T12:08:39.000Z</pubTime>
+        
+        <tag>Python2</tag>
+         
+        <tag>编码</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://leaosunday.cc/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://leaosunday.cc/2016/12/19/bs-lxml-re/</loc>
     <lastmod>2016-12-19T11:27:35.992Z</lastmod>
     <data>
@@ -11,15 +33,15 @@
         <title>BeautifulSoup、re、lxml解析速度对比</title>
         <pubTime>2016-12-19T10:49:51.000Z</pubTime>
         
+        <tag>Python2</tag>
+         
+        <tag>爬虫</tag>
+         
         <tag>BeautifulSoup</tag>
          
         <tag>re</tag>
          
         <tag>lxml</tag>
-         
-        <tag>爬虫</tag>
-         
-        <tag>Python2</tag>
          
          
            
@@ -83,9 +105,9 @@
         <title>Python爬虫-背景调研</title>
         <pubTime>2016-12-17T07:03:46.000Z</pubTime>
         
-        <tag>爬虫</tag>
-         
         <tag>Python2</tag>
+         
+        <tag>爬虫</tag>
          
          
            
